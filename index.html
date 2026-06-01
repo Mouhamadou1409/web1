@@ -50,23 +50,23 @@ nav{
   min-height:100vh;background:var(--dark);
   display:flex;align-items:center;position:relative;overflow:hidden;padding-top:68px;
 }
-/* Intégration de l'image du candidat dans la bannière */
 .hero-photo-bg{
   position:absolute;right:0;top:0;bottom:0;width:52%;
-  background:url('Easter Convention Poster (4).png') center/cover no-repeat;
-} 
+  background:url('Easter%20Convention%20Poster%20(3).png') center/cover no-repeat;
+  opacity: 1;
+}
 .hero-photo-bg::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(to right, var(--dark) 0%, rgba(13,17,23,0.65) 60%, rgba(13,17,23,0.15) 100%);
+  background:linear-gradient(to right, var(--dark) 0%, rgba(13,17,23,0.5) 50%, transparent 100%);
 }
 .hero-photo-bg::before{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(to top, var(--dark) 0%, transparent 30%);
+  background:linear-gradient(to top, var(--dark) 0%, transparent 20%);
   z-index:1;
 }
 .hero-overlay{
   position:absolute;inset:0;
-  background:radial-gradient(ellipse 55% 100% at 0% 50%, rgba(13,92,58,0.4) 0%, transparent 60%);
+  background:radial-gradient(ellipse 55% 100% at 0% 50%, rgba(13,92,58,0.3) 0%, transparent 60%);
 }
 .hero-grid-lines{
   position:absolute;inset:0;opacity:0.03;
@@ -335,9 +335,22 @@ footer{background:var(--dark);padding:4rem 5% 2rem;}
 @media(max-width:640px){
   .nav-links{display:none;}
   .hamburger{display:flex;}
-  .hero-photo-bg{width:100%;}
-  .hero-photo-bg::after{background:linear-gradient(to right,var(--dark) 1%,rgba(13,17,23,0.9) 100%);}
-  .agenda-item{grid-template-columns:70px 1fr;}.ag-badge{display:none;}
+  
+  /* ── CORRECTION APPORTÉE ICI POUR LE MODE MOBILE ── */
+  .hero-photo-bg {
+    width: 100%; 
+    opacity: 1; /* L'image s'affiche maintenant à 100% de sa clarté naturelle */
+    background-position: center center; /* Cadre le centre de l'affiche parfaitement */
+    background-size: cover;
+  }
+  
+  /* Ajustement précis du fondu noir pour garder le texte lisible sans flouter l'image */
+  .hero-photo-bg::after {
+    background: linear-gradient(to top, var(--dark) 35%, rgba(13,17,23,0.6) 70%, rgba(13,17,23,0.1) 100%);
+  }
+  
+  .agenda-item{grid-template-columns:70px 1fr;}
+  .ag-badge{display:none;}
   .footer-inner{grid-template-columns:1fr;}
   .bio-badge{right:0;bottom:-1rem;}
   .engagement-form{padding:1.8rem;}
@@ -377,7 +390,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;}
   <div class="hero-grid-lines"></div>
   <div class="hero-content">
     <div class="hero-left">
-      <div class="hero-badge">#Élection 2026</div>
+      <div class="hero-badge">Élection Présidentielle 2026</div>
       <h1 class="hero-title">
         Pour une nation<br>
         forte et <em>unie</em>
@@ -416,11 +429,11 @@ footer{background:var(--dark);padding:4rem 5% 2rem;}
 <section class="section bio-section" id="candidat">
   <div class="section-inner">
     <div class="section-label">Le Candidat</div>
-    <h2 class="section-title">Mo Diarra Tine —<br>Un homme de conviction</h2>
+    <h2 class="section-title">Mamadou Diallo —<br>Un homme de conviction</h2>
     <div class="divider"></div>
     <div class="bio-grid">
       <div class="bio-photo-wrap">
-        <img src="Easter Convention Poster (4).png" alt="Portrait de Mo Diarra Tine, candidat">
+        <img src="https://thispersondoesnotexist.com/image" alt="Portrait de Mamadou Diallo, candidat">
         <div class="bio-badge">
           <div class="bio-badge-n">25</div>
           <div class="bio-badge-t">ans d'engagement</div>
@@ -428,7 +441,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;}
       </div>
       <div>
         <p style="color:var(--gray-mid);line-height:1.8;font-size:1rem;margin-bottom:1.4rem;">
-          Né dans une famille modeste de Thiès, <strong style="color:var(--dark);">Mo Diarra Tine</strong> a consacré sa vie entière au service de sa nation. Juriste de formation, militant de longue date, il incarne une nouvelle génération de dirigeants alliant compétence, intégrité et vision.
+          Né dans une famille modeste de Thiès, <strong style="color:var(--dark);">Mamadou Diallo</strong> a consacré sa vie entière au service de sa nation. Juriste de formation, militant de longue date, il incarne une nouvelle génération de dirigeants alliant compétence, intégrité et vision.
         </p>
         <p style="color:var(--gray-mid);line-height:1.8;font-size:1rem;margin-bottom:1.6rem;">
           Son engagement ne s'est jamais démenti : des quartiers populaires aux plus hautes sphères de l'État, il a toujours défendu les mêmes valeurs — justice, solidarité et souveraineté nationale.
@@ -538,7 +551,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;}
           <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&q=80" alt="Forum économique">
           <div class="actu-card-body">
             <div class="actu-card-tag">Économie</div>
-            <div class="actu-card-title">Mo Diarra Tine dévoile son plan pour 500 000 emplois en 5 ans</div>
+            <div class="actu-card-title">Mamadou Diallo dévoile son plan pour 500 000 emplois en 5 ans</div>
             <div class="actu-card-date">24 Mai 2026</div>
           </div>
         </div>
@@ -568,7 +581,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;}
     <div class="section-label">Agenda</div>
     <h2 class="section-title">Événements de campagne</h2>
     <div class="divider" style="background:var(--gold);"></div>
-    <p class="section-desc">Rencontrez Mo Diarra Tine lors de ses déplacements à travers tout le pays.</p>
+    <p class="section-desc">Rencontrez Mamadou Diallo lors de ses déplacements à travers tout le pays.</p>
     <div class="agenda-list">
       <div class="agenda-item">
         <div class="ag-date"><div class="ag-day">14</div><div class="ag-month">Juin 2026</div></div>
@@ -691,7 +704,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;}
     <div class="temo-grid">
       <div class="temo-card">
         <div class="temo-stars">★★★★★</div>
-        <p class="temo-text">« Mo Diarra Tine est la voix que notre génération attendait. Il parle de nous, pour nous. Un homme qui a prouvé sa valeur par ses actes et non par de vaines promesses. »</p>
+        <p class="temo-text">« Mamadou Diallo est la voix que notre génération attendait. Il parle de nous, pour nous. Un homme qui a prouvé sa valeur par ses actes et non par de vaines promesses. »</p>
         <div class="temo-author"><div class="temo-av">AK</div><div><div class="temo-name">Aminata Kouyaté</div><div class="temo-role">Enseignante, Thiès</div></div></div>
       </div>
       <div class="temo-card">
@@ -712,7 +725,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;}
   <div class="footer-inner">
     <div>
       <div class="footer-logo">Elect<span>Voix</span></div>
-      <p class="footer-about">Campagne officielle de Mo Diarra Tine pour l'élection présidentielle 2026. Pour une nation forte, juste et souveraine. Mouvement « Nation Debout ».</p>
+      <p class="footer-about">Campagne officielle de Mamadou Diallo pour l'élection présidentielle 2026. Pour une nation forte, juste et souveraine. Mouvement « Nation Debout ».</p>
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
