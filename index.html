@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElectVoix — Votre Voix, Notre Avenir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #0D5C3A;
+  --green-mid: #1A8A5A;
+  --green-light: #E6F4EC;
+  --gold: #C9901A;
+  --gold-light: #F9F0DC;
+  --dark: #0D1117;
+  --gray-dark: #2C2C2C;
+  --gray-mid: #6B6B6B;
+  --gray-light: #F4F4F2;
+  --white: #FFFFFF;
+  --radius: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(13,17,23,0.97);backdrop-filter:blur(14px);
+  padding:0 5%;display:flex;align-items:center;justify-content:space-between;
+  height:68px;border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;letter-spacing:-0.5px;text-decoration:none;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.88rem;font-weight:500;letter-spacing:0.2px;transition:color 0.2s;}
+.nav-links a:hover{color:#fff;}
+.nav-cta{background:var(--green-mid);color:#fff !important;padding:0.5rem 1.2rem;border-radius:7px;transition:background 0.2s !important;}
+.nav-cta:hover{background:var(--green) !important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s;}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(13,17,23,0.99);padding:1.5rem 5%;z-index:199;}
+.mobile-menu.open{display:flex;flex-direction:column;gap:1rem;}
+.mobile-menu a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:1rem;font-weight:500;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+
+/* ── HERO / LANDING ── */
+.hero{
+  min-height:100vh;background:var(--dark);
+  display:flex;align-items:center;position:relative;overflow:hidden;padding-top:68px;
+}
+.hero-photo-bg{
+  position:absolute;right:0;top:0;bottom:0;width:52%;
+  background:url('https://thispersondoesnotexist.com/image') center/cover no-repeat;
+}
+.hero-photo-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right, var(--dark) 0%, rgba(13,17,23,0.65) 60%, rgba(13,17,23,0.15) 100%);
+}
+.hero-photo-bg::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top, var(--dark) 0%, transparent 30%);
+  z-index:1;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 55% 100% at 0% 50%, rgba(13,92,58,0.4) 0%, transparent 60%);
+}
+.hero-grid-lines{
+  position:absolute;inset:0;opacity:0.03;
+  background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.hero-content{
+  position:relative;z-index:2;
+  width:90%;max-width:1200px;margin:0 auto;
+  padding:5rem 0;
+}
+.hero-left{max-width:580px;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(201,144,26,0.15);border:1px solid rgba(201,144,26,0.3);
+  color:#E8A825;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1.8px;
+  padding:0.4rem 1rem;border-radius:100px;margin-bottom:1.5rem;
+}
+.hero-badge::before{content:'';width:6px;height:6px;background:#E8A825;border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,5.5vw,5rem);color:#fff;line-height:1.08;margin-bottom:1.2rem;
+}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-slogan{
+  font-size:1.15rem;color:rgba(255,255,255,0.65);
+  line-height:1.75;margin-bottom:2.5rem;max-width:480px;
+}
+.hero-slogan strong{color:rgba(255,255,255,0.9);font-weight:600;}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-engage{
+  background:var(--gold);color:var(--dark);
+  padding:1rem 2.2rem;border-radius:var(--radius);
+  font-size:1rem;font-weight:700;text-decoration:none;border:none;cursor:pointer;
+  transition:all 0.25s;display:inline-flex;align-items:center;gap:0.6rem;
+  box-shadow:0 4px 20px rgba(201,144,26,0.35);
+}
+.btn-engage:hover{background:#E8A825;transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,144,26,0.45);}
+.btn-programme{
+  background:transparent;color:#fff;
+  padding:1rem 2.2rem;border-radius:var(--radius);
+  font-size:1rem;font-weight:600;text-decoration:none;
+  border:1.5px solid rgba(255,255,255,0.3);cursor:pointer;
+  transition:all 0.25s;display:inline-flex;align-items:center;gap:0.6rem;
+}
+.btn-programme:hover{border-color:#fff;background:rgba(255,255,255,0.06);}
+.hero-stats{
+  display:flex;gap:0;
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius);overflow:hidden;max-width:460px;
+}
+.hstat{flex:1;padding:1.2rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,0.06);}
+.hstat:last-child{border-right:none;}
+.hstat-n{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#fff;}
+.hstat-l{font-size:0.72rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.9px;margin-top:0.15rem;}
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;z-index:2;
+}
+.hero-scroll span{font-size:0.7rem;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;}
+.scroll-arrow{width:24px;height:24px;border-right:2px solid rgba(255,255,255,0.3);border-bottom:2px solid rgba(255,255,255,0.3);transform:rotate(45deg);animation:scrollDown 1.5s infinite;}
+@keyframes scrollDown{0%,100%{transform:rotate(45deg) translate(0,0);opacity:1;}50%{transform:rotate(45deg) translate(4px,4px);opacity:0.4;}}
+
+/* ── SECTIONS ── */
+.section{padding:6rem 5%;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;color:var(--green-mid);margin-bottom:0.7rem;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.9rem);line-height:1.15;margin-bottom:0.8rem;}
+.section-desc{color:var(--gray-mid);font-size:1rem;line-height:1.75;max-width:580px;}
+.divider{width:48px;height:3px;background:var(--gold);margin:1.1rem 0 1.8rem;border-radius:2px;}
+
+/* ── BIOGRAPHIE ── */
+.bio-section{background:var(--white);}
+.bio-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:5rem;align-items:start;margin-top:3rem;}
+.bio-photo-wrap{position:relative;}
+.bio-photo-wrap img{width:100%;border-radius:20px;object-fit:cover;aspect-ratio:4/5;display:block;}
+.bio-badge{
+  position:absolute;bottom:-1.2rem;right:-1.2rem;
+  background:var(--dark);color:#fff;padding:1.2rem 1.5rem;
+  border-radius:var(--radius);text-align:center;box-shadow:0 8px 28px rgba(0,0,0,0.25);
+}
+.bio-badge-n{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1;}
+.bio-badge-t{font-size:0.72rem;color:rgba(255,255,255,0.55);margin-top:0.2rem;}
+.bio-values{display:flex;gap:0.75rem;flex-wrap:wrap;margin:1.5rem 0 1.8rem;}
+.bio-val{
+  background:var(--green-light);color:var(--green);
+  padding:0.35rem 0.9rem;border-radius:100px;font-size:0.8rem;font-weight:600;
+}
+.bio-timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{display:grid;grid-template-columns:80px 1fr;gap:1.2rem;padding:1.2rem 0;border-bottom:1px solid rgba(0,0,0,0.06);}
+.tl-item:last-child{border-bottom:none;}
+.tl-year{font-family:'Playfair Display',serif;font-size:0.85rem;font-weight:700;color:var(--green-mid);padding-top:3px;}
+.tl-text{font-size:0.92rem;line-height:1.6;color:var(--gray-dark);}
+.tl-text strong{color:var(--dark);font-weight:600;}
+
+/* ── PROGRAMME ── */
+.programme-section{background:var(--gray-light);}
+.prog-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem;}
+.programme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;}
+.prog-card{
+  background:#fff;border-radius:var(--radius);padding:2rem;
+  border:1px solid rgba(0,0,0,0.06);transition:all 0.3s;
+  position:relative;overflow:hidden;
+}
+.prog-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--green-mid),var(--gold));
+  transform:scaleX(0);transform-origin:left;transition:transform 0.35s;
+}
+.prog-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.1);}
+.prog-card:hover::after{transform:scaleX(1);}
+.prog-icon{width:50px;height:50px;background:var(--green-light);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1.2rem;}
+.prog-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:0.6rem;}
+.prog-text{color:var(--gray-mid);font-size:0.88rem;line-height:1.65;}
+.prog-num{
+  position:absolute;top:1.5rem;right:1.5rem;
+  font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;
+  color:rgba(0,0,0,0.04);line-height:1;
+}
+
+/* ── ACTUALITES ── */
+.actu-section{background:#fff;}
+.actu-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:2rem;margin-top:3rem;}
+.actu-main{border-radius:20px;overflow:hidden;background:var(--dark);position:relative;min-height:420px;cursor:pointer;}
+.actu-main img{width:100%;height:100%;object-fit:cover;display:block;opacity:0.7;transition:opacity 0.3s;}
+.actu-main:hover img{opacity:0.85;}
+.actu-main-overlay{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(13,17,23,0.97) 0%,rgba(13,17,23,0.5) 60%,transparent 100%);
+  padding:2rem;
+}
+.actu-tag{display:inline-block;background:var(--gold);color:var(--dark);font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:0.3rem 0.8rem;border-radius:4px;margin-bottom:0.8rem;}
+.actu-main-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;line-height:1.3;margin-bottom:0.5rem;}
+.actu-date{font-size:0.8rem;color:rgba(255,255,255,0.45);}
+.actu-side{display:flex;flex-direction:column;gap:1rem;}
+.actu-card{
+  border-radius:var(--radius);overflow:hidden;background:var(--gray-light);
+  display:grid;grid-template-columns:110px 1fr;cursor:pointer;transition:all 0.2s;
+}
+.actu-card:hover{transform:translateX(4px);}
+.actu-card img{width:110px;height:100%;object-fit:cover;display:block;}
+.actu-card-body{padding:1rem;}
+.actu-card-tag{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green-mid);margin-bottom:0.4rem;}
+.actu-card-title{font-size:0.88rem;font-weight:600;line-height:1.4;color:var(--dark);margin-bottom:0.4rem;}
+.actu-card-date{font-size:0.75rem;color:var(--gray-mid);}
+
+/* ── AGENDA ── */
+.agenda-section{background:var(--dark);}
+.agenda-section .section-title{color:#fff;}
+.agenda-section .section-desc{color:rgba(255,255,255,0.45);}
+.agenda-section .section-label{color:var(--gold);}
+.agenda-list{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.04);border-radius:var(--radius);overflow:hidden;margin-top:3rem;}
+.agenda-item{
+  background:rgba(255,255,255,0.03);padding:1.7rem 2rem;
+  display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:2rem;
+  border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.2s;cursor:pointer;
+}
+.agenda-item:hover{background:rgba(255,255,255,0.07);}
+.agenda-item:last-child{border-bottom:none;}
+.ag-date{text-align:center;}
+.ag-day{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:#fff;line-height:1;}
+.ag-month{font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;}
+.ag-event{font-weight:600;font-size:0.98rem;color:#fff;margin-bottom:0.3rem;}
+.ag-loc{font-size:0.83rem;color:rgba(255,255,255,0.4);}
+.ag-badge{padding:0.32rem 0.85rem;border-radius:100px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
+.badge-grand{background:rgba(26,138,90,0.18);color:#4DC98A;border:1px solid rgba(26,138,90,0.3);}
+.badge-local{background:rgba(201,144,26,0.18);color:#E8A825;border:1px solid rgba(201,144,26,0.3);}
+.badge-media{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);}
+
+/* ── AGIR AVEC NOUS ── */
+.agir-section{background:var(--green-light);}
+.agir-intro{max-width:600px;margin-bottom:3.5rem;}
+.agir-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-bottom:4rem;}
+.agir-card{
+  background:#fff;border-radius:var(--radius);padding:2rem;
+  border:1px solid rgba(0,0,0,0.07);text-align:center;
+  transition:all 0.3s;cursor:pointer;
+}
+.agir-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.1);}
+.agir-icon{font-size:2.5rem;margin-bottom:1rem;}
+.agir-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.6rem;}
+.agir-text{font-size:0.85rem;color:var(--gray-mid);line-height:1.6;margin-bottom:1.2rem;}
+.agir-btn{
+  background:var(--green-mid);color:#fff;
+  padding:0.6rem 1.4rem;border-radius:8px;font-size:0.85rem;font-weight:600;
+  border:none;cursor:pointer;transition:background 0.2s;
+}
+.agir-btn:hover{background:var(--green);}
+
+/* Formulaire d'engagement */
+.engagement-form{
+  background:#fff;border-radius:20px;padding:3rem;
+  border:1px solid rgba(0,0,0,0.07);max-width:760px;margin:0 auto;
+}
+.engagement-form h3{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:0.5rem;}
+.engagement-form p{color:var(--gray-mid);font-size:0.95rem;margin-bottom:2rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-group{display:flex;flex-direction:column;gap:0.4rem;}
+.form-group label{font-size:0.82rem;font-weight:600;color:var(--gray-dark);}
+.form-group input, .form-group select{
+  padding:0.75rem 1rem;border:1.5px solid rgba(0,0,0,0.12);border-radius:8px;
+  font-size:0.92rem;font-family:'DM Sans',sans-serif;color:var(--dark);
+  outline:none;transition:border-color 0.2s;background:#fff;
+}
+.form-group input:focus, .form-group select:focus{border-color:var(--green-mid);}
+.form-actions{
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;margin-top:1.5rem;
+}
+.btn-submit{
+  background:var(--green);color:#fff;padding:0.9rem 2.5rem;
+  border-radius:var(--radius);font-size:0.95rem;font-weight:700;
+  border:none;cursor:pointer;transition:all 0.25s;
+}
+.btn-submit:hover{background:var(--green-mid);transform:translateY(-2px);}
+.form-note{font-size:0.78rem;color:var(--gray-mid);}
+
+/* ── TEMOIGNAGES ── */
+.temo-section{background:var(--white);}
+.temo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem;}
+.temo-card{background:var(--gray-light);border-radius:var(--radius);padding:2rem;}
+.temo-stars{color:var(--gold);font-size:0.95rem;letter-spacing:2px;margin-bottom:1rem;}
+.temo-text{font-size:0.93rem;line-height:1.72;color:var(--gray-dark);font-style:italic;margin-bottom:1.5rem;}
+.temo-author{display:flex;align-items:center;gap:0.75rem;}
+.temo-av{width:42px;height:42px;border-radius:50%;background:var(--green-mid);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:0.82rem;flex-shrink:0;}
+.temo-name{font-weight:600;font-size:0.88rem;}
+.temo-role{font-size:0.78rem;color:var(--gray-mid);}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:4rem 5% 2rem;}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;margin-bottom:0.9rem;}
+.footer-logo span{color:var(--gold);}
+.footer-about{color:rgba(255,255,255,0.38);font-size:0.87rem;line-height:1.72;}
+.footer-col h4{color:#fff;font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.6rem;}
+.footer-col ul a{color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.87rem;transition:color 0.2s;}
+.footer-col ul a:hover{color:#fff;}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-note{color:rgba(255,255,255,0.22);font-size:0.78rem;}
+.social-links{display:flex;gap:0.65rem;}
+.social-link{width:36px;height:36px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.85rem;transition:all 0.2s;}
+.social-link:hover{border-color:rgba(255,255,255,0.35);color:#fff;}
+
+/* ── DEMO BADGE ── */
+.demo-tag{position:fixed;bottom:1.2rem;right:1.2rem;background:var(--gold);color:var(--dark);padding:0.5rem 1.1rem;border-radius:100px;font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;z-index:999;box-shadow:0 4px 16px rgba(201,144,26,0.4);}
+
+/* ── FADE IN ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+.hero-left>*{animation:fadeUp 0.8s both;}
+.hero-left>*:nth-child(1){animation-delay:0.05s;}
+.hero-left>*:nth-child(2){animation-delay:0.15s;}
+.hero-left>*:nth-child(3){animation-delay:0.25s;}
+.hero-left>*:nth-child(4){animation-delay:0.35s;}
+.hero-left>*:nth-child(5){animation-delay:0.45s;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .bio-grid{grid-template-columns:1fr;gap:3rem;}
+  .actu-grid{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .form-row{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero-photo-bg{width:100%;opacity:0.25;}
+  .hero-photo-bg::after{background:linear-gradient(to right,var(--dark) 30%,rgba(13,17,23,0.9) 100%);}
+  .agenda-item{grid-template-columns:70px 1fr;}.ag-badge{display:none;}
+  .footer-inner{grid-template-columns:1fr;}
+  .bio-badge{right:0;bottom:-1rem;}
+  .engagement-form{padding:1.8rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-tag">🔒 Démo</div>
+
+<!-- ══ NAVIGATION ══ -->
+<nav id="mainNav">
+  <a href="#accueil" class="nav-logo">Elect<span>Voix</span></a>
+  <ul class="nav-links">
+    <li><a href="#accueil">Accueil</a></li>
+    <li><a href="#candidat">Le Candidat</a></li>
+    <li><a href="#programme">Programme</a></li>
+    <li><a href="#actualites">Actualités</a></li>
+    <li><a href="#agenda">Agenda</a></li>
+    <li><a href="#agir" class="nav-cta">Agir avec nous</a></li>
+  </ul>
+  <div class="hamburger" id="menuBtn" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#accueil" onclick="closeMenu()">Accueil</a>
+  <a href="#candidat" onclick="closeMenu()">Le Candidat</a>
+  <a href="#programme" onclick="closeMenu()">Programme</a>
+  <a href="#actualites" onclick="closeMenu()">Actualités</a>
+  <a href="#agenda" onclick="closeMenu()">Agenda</a>
+  <a href="#agir" onclick="closeMenu()">Agir avec nous</a>
+</div>
+
+<!-- ══ 1. LANDING PAGE / HERO ══ -->
+<section class="hero" id="accueil">
+  <div class="hero-photo-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">Élection Présidentielle 2026</div>
+      <h1 class="hero-title">
+        Pour une nation<br>
+        forte et <em>unie</em>
+      </h1>
+      <p class="hero-slogan">
+        <strong>Le changement commence ici.</strong><br>
+        Rejoignez le mouvement qui place chaque citoyen au cœur de chaque décision. 
+        Ensemble, bâtissons l'avenir que nous méritons.
+      </p>
+      <div class="hero-cta">
+        <a href="#agir" class="btn-engage">✊ S'engager</a>
+        <a href="#programme" class="btn-programme">📋 Découvrir le programme →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat">
+          <div class="hstat-n">47%</div>
+          <div class="hstat-l">Intentions de vote</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-n">120k</div>
+          <div class="hstat-l">Supporters</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-n">64</div>
+          <div class="hstat-l">Villes couvertes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Défiler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ══ 2. LE CANDIDAT (BIOGRAPHIE) ══ -->
+<section class="section bio-section" id="candidat">
+  <div class="section-inner">
+    <div class="section-label">Le Candidat</div>
+    <h2 class="section-title">Mamadou Diallo —<br>Un homme de conviction</h2>
+    <div class="divider"></div>
+    <div class="bio-grid">
+      <div class="bio-photo-wrap">
+        <img src="https://thispersondoesnotexist.com/image" alt="Portrait de Mamadou Diallo, candidat">
+        <div class="bio-badge">
+          <div class="bio-badge-n">25</div>
+          <div class="bio-badge-t">ans d'engagement</div>
+        </div>
+      </div>
+      <div>
+        <p style="color:var(--gray-mid);line-height:1.8;font-size:1rem;margin-bottom:1.4rem;">
+          Né dans une famille modeste de Thiès, <strong style="color:var(--dark);">Mamadou Diallo</strong> a consacré sa vie entière au service de sa nation. Juriste de formation, militant de longue date, il incarne une nouvelle génération de dirigeants alliant compétence, intégrité et vision.
+        </p>
+        <p style="color:var(--gray-mid);line-height:1.8;font-size:1rem;margin-bottom:1.6rem;">
+          Son engagement ne s'est jamais démenti : des quartiers populaires aux plus hautes sphères de l'État, il a toujours défendu les mêmes valeurs — justice, solidarité et souveraineté nationale.
+        </p>
+        <div class="bio-values">
+          <span class="bio-val">Justice</span>
+          <span class="bio-val">Solidarité</span>
+          <span class="bio-val">Souveraineté</span>
+          <span class="bio-val">Transparence</span>
+          <span class="bio-val">Unité nationale</span>
+        </div>
+        <div class="bio-timeline">
+          <div class="tl-item">
+            <div class="tl-year">2001</div>
+            <div class="tl-text"><strong>Diplômé</strong> en Droit Public et Sciences Politiques, Université Cheikh Anta Diop, Dakar</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2005–12</div>
+            <div class="tl-text"><strong>Directeur</strong> de l'Agence Nationale du Développement Communautaire</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2012–19</div>
+            <div class="tl-text"><strong>Ministre délégué</strong> chargé des Affaires sociales et de la Solidarité nationale</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2019–24</div>
+            <div class="tl-text"><strong>Président</strong> du Conseil Économique, Social et Environnemental</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2025</div>
+            <div class="tl-text"><strong>Lancement</strong> de la candidature présidentielle — Mouvement « Nation Debout »</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 3. PROGRAMME (VISION) ══ -->
+<section class="section programme-section" id="programme">
+  <div class="section-inner">
+    <div class="prog-header">
+      <div>
+        <div class="section-label">Notre vision</div>
+        <h2 class="section-title">Un programme<br>au service du peuple</h2>
+        <div class="divider"></div>
+        <p class="section-desc">Six priorités nationales pour transformer notre pays en une nation prospère, juste et souveraine d'ici 2031.</p>
+      </div>
+      <a href="#agir" class="btn-engage" style="height:fit-content;">Télécharger le programme complet</a>
+    </div>
+    <div class="programme-grid">
+      <div class="prog-card">
+        <div class="prog-num">01</div>
+        <div class="prog-icon">🎓</div>
+        <div class="prog-title">Éducation pour tous</div>
+        <p class="prog-text">Scolarisation gratuite jusqu'au baccalauréat, modernisation de 3 000 établissements et formation de 50 000 nouveaux enseignants dans les 5 premières années.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-num">02</div>
+        <div class="prog-icon">🏥</div>
+        <div class="prog-title">Santé universelle</div>
+        <p class="prog-text">Couverture médicale à 100% de la population, construction de 200 centres de santé en zones rurales, et gratuité des soins maternels et pédiatriques.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-num">03</div>
+        <div class="prog-icon">⚡</div>
+        <div class="prog-title">Énergie & environnement</div>
+        <p class="prog-text">Électrification totale du territoire via les énergies renouvelables. Objectif : 70% d'énergie propre en 2030 et réduction de 40% des émissions de CO₂.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-num">04</div>
+        <div class="prog-icon">💼</div>
+        <div class="prog-title">Emploi & économie</div>
+        <p class="prog-text">Création de 500 000 emplois en 5 ans, soutien aux PME nationales, zones franches pour l'industrie locale et attractivité des investissements étrangers responsables.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-num">05</div>
+        <div class="prog-icon">⚖️</div>
+        <div class="prog-title">Justice & sécurité</div>
+        <p class="prog-text">Réforme profonde pour une justice indépendante et équitable. Renforcement des forces de sécurité au service du citoyen, avec tolérance zéro pour la corruption.</p>
+      </div>
+      <div class="prog-card">
+        <div class="prog-num">06</div>
+        <div class="prog-icon">🌾</div>
+        <div class="prog-title">Agriculture souveraine</div>
+        <p class="prog-text">Soutien aux agriculteurs, modernisation des filières agricoles et atteinte de l'autosuffisance alimentaire nationale d'ici 2030.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4. ACTUALITÉS ══ -->
+<section class="section actu-section" id="actualites">
+  <div class="section-inner">
+    <div class="section-label">Actualités</div>
+    <h2 class="section-title">Dernières nouvelles<br>de la campagne</h2>
+    <div class="divider"></div>
+    <div class="actu-grid">
+      <!-- Article principal -->
+      <div class="actu-main">
+        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80" alt="Grand meeting national">
+        <div class="actu-main-overlay">
+          <span class="actu-tag">À la une</span>
+          <div class="actu-main-title">Grand meeting national : 80 000 personnes mobilisées à Dakar pour « Nation Debout »</div>
+          <div class="actu-date">📅 28 Mai 2026</div>
+        </div>
+      </div>
+      <!-- Articles secondaires -->
+      <div class="actu-side">
+        <div class="actu-card">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&q=80" alt="Forum économique">
+          <div class="actu-card-body">
+            <div class="actu-card-tag">Économie</div>
+            <div class="actu-card-title">Mamadou Diallo dévoile son plan pour 500 000 emplois en 5 ans</div>
+            <div class="actu-card-date">24 Mai 2026</div>
+          </div>
+        </div>
+        <div class="actu-card">
+          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=300&q=80" alt="Santé">
+          <div class="actu-card-body">
+            <div class="actu-card-tag">Santé</div>
+            <div class="actu-card-title">La couverture médicale universelle, axe central du programme de santé</div>
+            <div class="actu-card-date">20 Mai 2026</div>
+          </div>
+        </div>
+        <div class="actu-card">
+          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=300&q=80" alt="Énergie">
+          <div class="actu-card-body">
+            <div class="actu-card-tag">Environnement</div>
+            <div class="actu-card-title">Vision énergétique : cap sur 70% d'énergies renouvelables d'ici 2030</div>
+            <div class="actu-card-date">16 Mai 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 5. AGENDA ══ -->
+<section class="section agenda-section" id="agenda">
+  <div class="section-inner">
+    <div class="section-label">Agenda</div>
+    <h2 class="section-title">Événements de campagne</h2>
+    <div class="divider" style="background:var(--gold);"></div>
+    <p class="section-desc">Rencontrez Mamadou Diallo lors de ses déplacements à travers tout le pays.</p>
+    <div class="agenda-list">
+      <div class="agenda-item">
+        <div class="ag-date"><div class="ag-day">14</div><div class="ag-month">Juin 2026</div></div>
+        <div><div class="ag-event">Grand Meeting National — Stade Léopold Sédar Senghor</div><div class="ag-loc">📍 Dakar — 10h00 | Entrée libre</div></div>
+        <span class="ag-badge badge-grand">Grand meeting</span>
+      </div>
+      <div class="agenda-item">
+        <div class="ag-date"><div class="ag-day">19</div><div class="ag-month">Juin 2026</div></div>
+        <div><div class="ag-event">Caravane Populaire — Tournée Casamance</div><div class="ag-loc">📍 Ziguinchor — 09h00 | 5 quartiers</div></div>
+        <span class="ag-badge badge-local">Tournée locale</span>
+      </div>
+      <div class="agenda-item">
+        <div class="ag-date"><div class="ag-day">25</div><div class="ag-month">Juin 2026</div></div>
+        <div><div class="ag-event">Grand Débat Présidentiel — RTS 1</div><div class="ag-loc">📺 En direct national — 20h30</div></div>
+        <span class="ag-badge badge-media">Média</span>
+      </div>
+      <div class="agenda-item">
+        <div class="ag-date"><div class="ag-day">02</div><div class="ag-month">Juil 2026</div></div>
+        <div><div class="ag-event">Forum Économique — Emploi des Jeunes</div><div class="ag-loc">📍 Saint-Louis — Centre de Conférences</div></div>
+        <span class="ag-badge badge-local">Forum</span>
+      </div>
+      <div class="agenda-item">
+        <div class="ag-date"><div class="ag-day">10</div><div class="ag-month">Juil 2026</div></div>
+        <div><div class="ag-event">Rassemblement Final — Clôture de Campagne</div><div class="ag-loc">📍 Place de l'Indépendance, Dakar — 16h00</div></div>
+        <span class="ag-badge badge-grand">Grand meeting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6. AGIR AVEC NOUS (ENGAGEMENT) ══ -->
+<section class="section agir-section" id="agir">
+  <div class="section-inner">
+    <div class="agir-intro">
+      <div class="section-label">Agir avec nous</div>
+      <h2 class="section-title">Chaque geste<br>compte pour la nation</h2>
+      <div class="divider"></div>
+      <p class="section-desc">Il existe de nombreuses façons de contribuer à ce mouvement. Choisissez celle qui vous correspond et rejoignez des milliers de citoyens engagés.</p>
+    </div>
+
+    <div class="agir-grid">
+      <div class="agir-card">
+        <div class="agir-icon">🗳️</div>
+        <div class="agir-title">Voter & convaincre</div>
+        <p class="agir-text">Parlez autour de vous, expliquez le programme à vos proches, voisins et collègues. Chaque voix compte.</p>
+        <button class="agir-btn" onclick="scrollToForm()">Je m'engage</button>
+      </div>
+      <div class="agir-card">
+        <div class="agir-icon">📣</div>
+        <div class="agir-title">Devenir bénévole</div>
+        <p class="agir-text">Rejoignez les équipes terrain pour les meetings, distributions de tracts, et animations dans votre quartier.</p>
+        <button class="agir-btn" onclick="scrollToForm()">Rejoindre l'équipe</button>
+      </div>
+      <div class="agir-card">
+        <div class="agir-icon">💚</div>
+        <div class="agir-title">Faire un don</div>
+        <p class="agir-text">Soutenez financièrement la campagne pour que le message atteigne chaque coin du pays, sans exception.</p>
+        <button class="agir-btn" onclick="scrollToForm()">Faire un don</button>
+      </div>
+      <div class="agir-card">
+        <div class="agir-icon">📱</div>
+        <div class="agir-title">Partager en ligne</div>
+        <p class="agir-text">Relayez nos messages sur vos réseaux sociaux et aidez à amplifier la voix du changement.</p>
+        <button class="agir-btn" onclick="scrollToForm()">S'inscrire</button>
+      </div>
+    </div>
+
+    <!-- Formulaire d'engagement -->
+    <div class="engagement-form" id="engagementForm">
+      <h3>Je rejoins le mouvement</h3>
+      <p>Remplissez ce formulaire et notre équipe vous contactera sous 48h pour vous orienter selon vos disponibilités.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom *</label>
+          <input type="text" placeholder="Votre prénom">
+        </div>
+        <div class="form-group">
+          <label>Nom *</label>
+          <input type="text" placeholder="Votre nom">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" placeholder="votre@email.com">
+        </div>
+        <div class="form-group">
+          <label>Téléphone</label>
+          <input type="tel" placeholder="+221 XX XXX XX XX">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Ville / Région</label>
+          <input type="text" placeholder="Ex : Dakar, Thiès, Saint-Louis...">
+        </div>
+        <div class="form-group">
+          <label>Comment voulez-vous agir ?</label>
+          <select>
+            <option value="">Choisir une option…</option>
+            <option>Voter & convaincre mon entourage</option>
+            <option>Devenir bénévole terrain</option>
+            <option>Faire un don à la campagne</option>
+            <option>Partager sur les réseaux sociaux</option>
+            <option>Organiser un événement local</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-actions">
+        <p class="form-note">🔒 Vos données sont protégées. Désinscription possible à tout moment.</p>
+        <button class="btn-submit" onclick="handleSubmit()">Valider mon engagement →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TÉMOIGNAGES ══ -->
+<section class="section temo-section">
+  <div class="section-inner">
+    <div class="section-label">Soutiens</div>
+    <h2 class="section-title">Ils parlent<br>pour le changement</h2>
+    <div class="divider"></div>
+    <div class="temo-grid">
+      <div class="temo-card">
+        <div class="temo-stars">★★★★★</div>
+        <p class="temo-text">« Mamadou Diallo est la voix que notre génération attendait. Il parle de nous, pour nous. Un homme qui a prouvé sa valeur par ses actes et non par de vaines promesses. »</p>
+        <div class="temo-author"><div class="temo-av">AK</div><div><div class="temo-name">Aminata Kouyaté</div><div class="temo-role">Enseignante, Thiès</div></div></div>
+      </div>
+      <div class="temo-card">
+        <div class="temo-stars">★★★★★</div>
+        <p class="temo-text">« Son programme pour les PME est concret et réaliste. En tant qu'entrepreneur, je cherchais un leader qui comprend les défis économiques réels de notre pays. »</p>
+        <div class="temo-author"><div class="temo-av">OD</div><div><div class="temo-name">Ousmane Diouf</div><div class="temo-role">Chef d'entreprise, Dakar</div></div></div>
+      </div>
+      <div class="temo-card">
+        <div class="temo-stars">★★★★★</div>
+        <p class="temo-text">« La santé de nos villages a été négligée pendant trop longtemps. Je soutiens ce candidat parce qu'il a mis la santé universelle au cœur de son programme. »</p>
+        <div class="temo-author"><div class="temo-av">FN</div><div><div class="temo-name">Fatoumata Ndiaye</div><div class="temo-role">Sage-femme, Kédougou</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Elect<span>Voix</span></div>
+      <p class="footer-about">Campagne officielle de Mamadou Diallo pour l'élection présidentielle 2026. Pour une nation forte, juste et souveraine. Mouvement « Nation Debout ».</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#candidat">Le Candidat</a></li>
+        <li><a href="#programme">Programme</a></li>
+        <li><a href="#actualites">Actualités</a></li>
+        <li><a href="#agenda">Agenda</a></li>
+        <li><a href="#agir">Agir avec nous</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Ressources</h4>
+      <ul>
+        <li><a href="#">Programme complet (PDF)</a></li>
+        <li><a href="#">Kit presse</a></li>
+        <li><a href="#">Communiqués officiels</a></li>
+        <li><a href="#">Photos & Vidéos</a></li>
+        <li><a href="#">Mentions légales</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">info@electvoix.demo</a></li>
+        <li><a href="#">+221 XX XXX XX XX</a></li>
+        <li><a href="#">Dakar, Sénégal</a></li>
+        <li><a href="#">Presse : presse@electvoix.demo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-note">© 2026 ElectVoix — Site de démonstration. Tous droits réservés.</p>
+    <div class="social-links">
+      <a href="#" class="social-link" title="Facebook">f</a>
+      <a href="#" class="social-link" title="X / Twitter">𝕏</a>
+      <a href="#" class="social-link" title="Instagram">◻</a>
+      <a href="#" class="social-link" title="YouTube">▶</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+// Nav scroll effect
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('mainNav');
+  nav.style.boxShadow=window.scrollY>20?'0 4px 28px rgba(0,0,0,0.4)':'none';
+});
+
+// Mobile menu
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');}
+
+// Scroll to form
+function scrollToForm(){document.getElementById('engagementForm').scrollIntoView({behavior:'smooth',block:'start'});}
+
+// Form submit
+function handleSubmit(){
+  const inputs=document.querySelectorAll('#engagementForm input, #engagementForm select');
+  let filled=true;
+  inputs.forEach(i=>{if(i.required&&!i.value)filled=false;});
+  alert('✅ Merci pour votre engagement !\nNotre équipe vous contactera bientôt.\n\n(Ceci est une démonstration)');
+}
+
+// Fade-in on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.style.opacity='1';
+      entry.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:0.08});
+
+document.querySelectorAll('.prog-card,.temo-card,.agenda-item,.agir-card,.actu-card,.tl-item').forEach(el=>{
+  el.style.opacity='0';
+  el.style.transform='translateY(18px)';
+  el.style.transition='opacity 0.5s ease, transform 0.5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
