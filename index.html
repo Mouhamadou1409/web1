@@ -52,16 +52,17 @@ nav{
 }
 .hero-photo-bg{
   position:absolute;right:0;top:0;bottom:0;width:52%;
-  background:url('Easter%20Convention%20Poster%20(3).png') center/cover no-repeat;
+  background:url('Easter%20Convention%20Poster%20(1).jpg') center/cover no-repeat;
   opacity: 1;
 }
+/* MODIFICATION : Dégradé très court à gauche pour laisser le reste de l'image 100% net et lumineux */
 .hero-photo-bg::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(to right, var(--dark) 0%, rgba(13,17,23,0.5) 50%, transparent 100%);
+  background:linear-gradient(to right, var(--dark) 0%, rgba(13,17,23,0.4) 10%, transparent 25%);
 }
 .hero-photo-bg::before{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(to top, var(--dark) 0%, transparent 20%);
+  background:linear-gradient(to top, var(--dark) 0%, transparent 15%);
   z-index:1;
 }
 .hero-overlay{
@@ -332,21 +333,43 @@ footer{background:var(--dark);padding:4rem 5% 2rem;}
   .footer-inner{grid-template-columns:1fr 1fr;}
   .form-row{grid-template-columns:1fr;}
 }
-@media(max-width:640px){
+@media(max-width:768px){
   .nav-links{display:none;}
   .hamburger{display:flex;}
   
-  /* ── CORRECTION APPORTÉE ICI POUR LE MODE MOBILE ── */
-  .hero-photo-bg {
-    width: 100%; 
-    opacity: 1; /* L'image s'affiche maintenant à 100% de sa clarté naturelle */
-    background-position: center center; /* Cadre le centre de l'affiche parfaitement */
-    background-size: cover;
+  /* ── RESTRUCTURATION COMPLÈTE DU MODE MOBILE POUR UNE CLARTÉ À 100% ── */
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    padding-top: 68px; /* Évite de masquer le haut sous le menu fixe */
+    background: var(--dark);
   }
   
-  /* Ajustement précis du fondu noir pour garder le texte lisible sans flouter l'image */
-  .hero-photo-bg::after {
-    background: linear-gradient(to top, var(--dark) 35%, rgba(13,17,23,0.6) 70%, rgba(13,17,23,0.1) 100%);
+  .hero-photo-bg {
+    position: relative;
+    width: 100%; 
+    height: 55vh; /* Hauteur optimale et claire de la bannière sur smartphone */
+    min-height: 320px;
+    right: auto; top: auto; bottom: auto; left: auto;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1; /* Aucune perte de qualité ou de luminosité */
+  }
+  
+  /* Supression totale des voiles et filtres sombres sur mobile pour libérer l'image */
+  .hero-photo-bg::after, .hero-photo-bg::before {
+    display: none !important;
+  }
+  
+  .hero-content {
+    width: 100%;
+    padding: 3rem 5%;
+    margin: 0;
+  }
+  
+  .hero-left {
+    max-width: 100%;
   }
   
   .agenda-item{grid-template-columns:70px 1fr;}
@@ -420,10 +443,6 @@ footer{background:var(--dark);padding:4rem 5% 2rem;}
       </div>
     </div>
   </div>
-  <div class="hero-scroll">
-    <span>Défiler</span>
-    <div class="scroll-arrow"></div>
-  </div>
 </section>
 
 <section class="section bio-section" id="candidat">
@@ -433,7 +452,7 @@ footer{background:var(--dark);padding:4rem 5% 2rem;}
     <div class="divider"></div>
     <div class="bio-grid">
       <div class="bio-photo-wrap">
-        <img src="https://thispersondoesnotexist.com/image" alt="Portrait de Mamadou Diallo, candidat">
+        <img src="Easter%20Convention%20Poster%20(1).jpg" alt="Portrait de Mamadou Diallo, candidat">
         <div class="bio-badge">
           <div class="bio-badge-n">25</div>
           <div class="bio-badge-t">ans d'engagement</div>
