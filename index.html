@@ -122,7 +122,7 @@ img{max-width:100%;display:block;}
   max-width:1280px;margin:0 auto;padding:3rem 6%;width:100%;
   display:grid;grid-template-columns:1fr 460px;gap:3.5rem;align-items:center;
 }
-.hero-text{}
+.hero-text{position:relative;}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:10px;
   color:rgba(255,255,255,.7);font-size:.72rem;font-weight:600;
@@ -193,6 +193,7 @@ img{max-width:100%;display:block;}
 .hero-meta-value{color:#fff;font-size:.95rem;font-weight:500;}
 
 /* Hero candidates panel */
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .hero-panel{
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.1);
@@ -213,7 +214,6 @@ img{max-width:100%;display:block;}
   content:'';width:6px;height:6px;background:#22c55e;border-radius:50%;
   animation:pulse 2s infinite;box-shadow:0 0 8px rgba(34,197,94,.6);
 }
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .hero-cand{
   display:grid;grid-template-columns:90px 1fr;gap:1rem;align-items:center;
   padding:1rem 0;
@@ -318,28 +318,32 @@ img{max-width:100%;display:block;}
   border:1px solid var(--border);
 }
 .cand-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
-.cand-banner{
-  height:6px;background:linear-gradient(90deg,var(--primary),var(--accent));
-}
+.cand-banner{height:5px;background:linear-gradient(90deg,var(--primary),var(--accent));}
 .cand-banner.alt{background:linear-gradient(90deg,var(--gold),#d4ad2c);}
 .cand-head{
-  padding:2.5rem;display:grid;grid-template-columns:190px 1fr;gap:2rem;align-items:start;
-  border-bottom:1px solid var(--border);
+  position:relative;height:380px;overflow:hidden;
 }
-.cand-photo{
-  width:190px;height:240px;border-radius:8px;overflow:hidden;
-  border:3px solid var(--cream);box-shadow:var(--shadow-lg);
+.cand-head::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,15,40,.92) 0%,rgba(0,15,40,.5) 50%,rgba(0,15,40,.1) 100%);
+  z-index:1;
 }
-.cand-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.cand-photo{position:absolute;inset:0;width:100%;height:100%;background:#06101f;}
+.cand-photo img{width:100%;height:100%;object-fit:contain;object-position:center bottom;}
+.cand-head-info{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:1.6rem 2rem;z-index:2;
+}
 .cand-poste{
-  display:inline-block;font-size:.65rem;font-weight:700;
+  display:inline-block;font-size:.62rem;font-weight:700;
   text-transform:uppercase;letter-spacing:1.8px;
-  color:var(--primary);background:var(--cream);
-  padding:.3rem .8rem;border-radius:100px;margin-bottom:.7rem;
+  color:var(--gold);background:rgba(201,162,39,.15);
+  padding:.3rem .9rem;border-radius:100px;margin-bottom:.6rem;
+  border:1px solid rgba(201,162,39,.35);
 }
-.cand-poste.gold{color:var(--gold);background:var(--gold-light);}
-.cand-name{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;color:var(--primary-dark);line-height:1.15;}
-.cand-titre{font-size:.85rem;color:var(--text-light);margin-top:.4rem;}
+.cand-poste.gold{color:var(--gold);background:rgba(201,162,39,.15);border-color:rgba(201,162,39,.35);}
+.cand-name{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:700;color:#fff;line-height:1.1;}
+.cand-titre{font-size:.82rem;color:rgba(255,255,255,.6);margin-top:.35rem;}
 .cand-body{padding:2rem 2.5rem 2.5rem;}
 .cand-body p{font-size:.95rem;line-height:1.75;color:var(--text-light);margin-bottom:1rem;}
 .cand-engagements{
@@ -602,7 +606,6 @@ footer{background:#000d24;color:#fff;padding:4.5rem 6% 2rem;}
   .vision-grid{grid-template-columns:1fr;gap:3rem;}
   .prog-layout{grid-template-columns:1fr;}
   .prog-sidebar{position:static;}
-  .prog-list{display:grid;grid-template-columns:repeat(2,1fr);}
   .eng-grid{grid-template-columns:1fr;gap:2.5rem;}
   .footer-top{grid-template-columns:1fr 1fr;}
   .stats-grid{grid-template-columns:repeat(2,1fr);}
@@ -617,11 +620,65 @@ footer{background:#000d24;color:#fff;padding:4.5rem 6% 2rem;}
   .vision-q{font-size:1.15rem;}
   .vision-features{grid-template-columns:1fr;}
   .cand-grid{grid-template-columns:1fr;gap:1.5rem;}
-  .cand-head{grid-template-columns:110px 1fr;gap:1.2rem;padding:1.5rem;}
-  .cand-photo{width:110px;height:140px;}
+  .cand-head{height:300px;}
   .cand-body{padding:1.5rem;}
-  .prog-list{grid-template-columns:1fr;}
-  .prog-body{grid-template-columns:1fr;gap:2rem;}
+  /* ── Programme mobile : cartes empilées ── */
+  .prog-layout{grid-template-columns:1fr;gap:0;margin-top:1.5rem;}
+  .prog-sidebar{display:none;}
+  .prog-content{display:flex;flex-direction:column;gap:1rem;}
+  .prog-panel{
+    display:block !important;
+    animation:none !important;
+    border:1px solid var(--border);
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:var(--shadow-sm);
+  }
+  .prog-header{
+    background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);
+    border-left:none;border-top:3px solid var(--gold);
+    padding:1.1rem 1.2rem 1.2rem;
+    margin-bottom:0;cursor:pointer;user-select:none;
+    position:relative;display:flex;flex-direction:column;align-items:flex-start;
+  }
+  .prog-axe{color:rgba(255,255,255,.6);font-size:.63rem;margin-bottom:.25rem;}
+  .prog-h2{color:#fff;font-size:1rem;letter-spacing:-.2px;margin-bottom:0;}
+  .prog-objectif{
+    color:rgba(255,255,255,.7);font-size:.8rem;line-height:1.5;font-style:italic;
+    margin-top:.45rem;
+  }
+  .prog-arrow{
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--gold);color:var(--primary-dark);
+    font-size:.7rem;font-weight:700;
+    padding:.42rem 1.1rem;border-radius:100px;
+    margin-top:.9rem;
+    text-transform:uppercase;letter-spacing:.9px;
+    border:none;cursor:pointer;
+    transition:background .25s,color .25s;
+    position:static;transform:none;
+  }
+  .prog-arrow .arr-chev{
+    display:inline-block;font-size:.85rem;line-height:1;
+    transition:transform .3s ease;
+  }
+  .prog-panel.acc-open .prog-arrow{
+    background:rgba(255,255,255,.18);color:#fff;transform:none;
+  }
+  .prog-panel.acc-open .prog-arrow .arr-chev{transform:rotate(180deg);}
+  .prog-body-wrap{
+    overflow:hidden;
+    max-height:0;
+    transition:max-height .4s ease;
+  }
+  .prog-panel.acc-open .prog-body-wrap{max-height:3000px;}
+  .prog-body{grid-template-columns:1fr;gap:0;padding:1.2rem;}
+  .prog-col{padding-bottom:1rem;}
+  .prog-col+.prog-col{padding-top:1rem;border-top:1px solid var(--border);}
+  .prog-col h4{font-size:.68rem;padding-bottom:.55rem;margin-bottom:.85rem;}
+  .prog-actions li{font-size:.82rem;line-height:1.55;padding:.4rem 0 .4rem 1.2rem;}
+  .prog-actions li::before{top:.9rem;width:5px;height:5px;}
+  .indic-card{font-size:.79rem;padding:.65rem .85rem;}
   .ag-card{grid-template-columns:70px 1fr;gap:1rem;padding:1.2rem;}
   .ag-pill{display:none;}
   .eng-form{padding:1.8rem;}
@@ -811,7 +868,7 @@ footer{background:#000d24;color:#fff;padding:4.5rem 6% 2rem;}
         <div class="cand-banner"></div>
         <div class="cand-head">
           <div class="cand-photo"><img src="ciss.png" alt="Mady CISSE"></div>
-          <div>
+          <div class="cand-head-info">
             <span class="cand-poste">Candidat Directeur de l'ESP</span>
             <h3 class="cand-name">Mady CISSE</h3>
             <p class="cand-titre">Professeur Titulaire · École Supérieure Polytechnique, UCAD</p>
@@ -832,7 +889,7 @@ footer{background:#000d24;color:#fff;padding:4.5rem 6% 2rem;}
         <div class="cand-banner alt"></div>
         <div class="cand-head">
           <div class="cand-photo"><img src="fall.png" alt="Ibrahima FALL" style="filter:saturate(.88) brightness(1.02);"></div>
-          <div>
+          <div class="cand-head-info">
             <span class="cand-poste gold">Candidat Directeur des Études</span>
             <h3 class="cand-name">Ibrahima FALL</h3>
             <p class="cand-titre">Professeur Titulaire · École Supérieure Polytechnique, UCAD</p>
@@ -1390,7 +1447,7 @@ footer{background:#000d24;color:#fff;padding:4.5rem 6% 2rem;}
       <ul>
         <li><a href="http://www.esp.sn" target="_blank">www.esp.sn</a></li>
         <li><a href="http://www.ucad.sn" target="_blank">www.ucad.sn</a></li>
-        <li><a href="#">Forge Ndiaga NDIAYE</a></li>
+      
         <li><a href="#">Contact presse</a></li>
         <li><a href="#">Mentions légales</a></li>
       </ul>
@@ -1425,6 +1482,44 @@ function showAxe(i){
   document.querySelectorAll('.prog-item').forEach((t,j)=>t.classList.toggle('active',j===i));
   document.querySelectorAll('.prog-panel').forEach((p,j)=>p.classList.toggle('active',j===i));
 }
+
+// Accordéon mobile pour les 7 axes
+function setArrowLabel(panel){
+  const txt=panel.querySelector('.arr-txt');
+  if(!txt)return;
+  txt.textContent=panel.classList.contains('acc-open')?'Réduire':'Voir le contenu';
+}
+function initAccordion(){
+  if(window.innerWidth>720)return;
+  document.querySelectorAll('.prog-panel').forEach((panel,i)=>{
+    const header=panel.querySelector('.prog-header');
+    const body=panel.querySelector('.prog-body');
+    if(!header||!body||header.dataset.acc)return;
+    header.dataset.acc='1';
+    // Bouton pill visible avec texte + chevron
+    const arrow=document.createElement('span');
+    arrow.className='prog-arrow';
+    arrow.innerHTML='<span class="arr-txt">Voir le contenu</span><span class="arr-chev">&#9660;</span>';
+    header.appendChild(arrow);
+    // Envelopper le body
+    const wrap=document.createElement('div');
+    wrap.className='prog-body-wrap';
+    body.parentNode.insertBefore(wrap,body);
+    wrap.appendChild(body);
+    // Premier panneau ouvert par défaut
+    if(i===0){panel.classList.add('acc-open');setArrowLabel(panel);}
+    // Toggle au clic
+    header.addEventListener('click',()=>{
+      const wasOpen=panel.classList.contains('acc-open');
+      document.querySelectorAll('.prog-panel').forEach(p=>{
+        p.classList.remove('acc-open');setArrowLabel(p);
+      });
+      if(!wasOpen){panel.classList.add('acc-open');setArrowLabel(panel);}
+    });
+  });
+}
+document.addEventListener('DOMContentLoaded',initAccordion);
+window.addEventListener('resize',()=>{if(window.innerWidth<=720)initAccordion();});
 
 // Form
 function handleSubmit(){
