@@ -3,768 +3,1406 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ElectVoix — Votre Voix, Notre Avenir</title>
+<title>Mady CISSE & Ibrahima FALL — Programme ESP/UCAD 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --green: #0D5C3A;
-  --green-mid: #1A8A5A;
-  --green-light: #E6F4EC;
-  --gold: #C9901A;
-  --gold-light: #F9F0DC;
-  --dark: #0D1117;
-  --gray-dark: #2C2C2C;
-  --gray-mid: #6B6B6B;
-  --gray-light: #F4F4F2;
-  --white: #FFFFFF;
-  --radius: 12px;
+:root{
+  --primary:#003C7E;
+  --primary-dark:#002347;
+  --primary-light:#1565C0;
+  --accent:#2897e8;
+  --gold:#C9A227;
+  --gold-light:#FAF3DC;
+  --cream:#FBF8F3;
+  --dark:#0a1628;
+  --text:#1a1f2e;
+  --text-light:#4a5168;
+  --gray:#6b7280;
+  --border:#e5e8ed;
+  --light:#f7f8fb;
+  --white:#fff;
+  --r:4px;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow:0 4px 16px rgba(0,60,126,.08);
+  --shadow-lg:0 12px 40px rgba(0,60,126,.12);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden;}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;}
+img{max-width:100%;display:block;}
 
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  background:rgba(13,17,23,0.97);backdrop-filter:blur(14px);
-  padding:0 5%;display:flex;align-items:center;justify-content:space-between;
-  height:68px;border-bottom:1px solid rgba(255,255,255,0.06);
+/* ════ TOPBAR ════ */
+.topbar{
+  background:var(--primary-dark);color:#fff;
+  font-size:.75rem;padding:.55rem 6%;
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid rgba(255,255,255,.1);
 }
-.nav-logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;letter-spacing:-0.5px;text-decoration:none;}
-.nav-logo span{color:var(--gold);}
-.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center;}
-.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.88rem;font-weight:500;letter-spacing:0.2px;transition:color 0.2s;}
-.nav-links a:hover{color:#fff;}
-.nav-cta{background:var(--green-mid);color:#fff !important;padding:0.5rem 1.2rem;border-radius:7px;transition:background 0.2s !important;}
-.nav-cta:hover{background:var(--green) !important;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all 0.3s;}
-.mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(13,17,23,0.99);padding:1.5rem 5%;z-index:199;}
-.mobile-menu.open{display:flex;flex-direction:column;gap:1rem;}
-.mobile-menu a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:1rem;font-weight:500;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+.tb-l{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+.tb-l span{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.85);}
+.tb-l strong{color:#fff;font-weight:600;}
+.tb-r{display:flex;align-items:center;gap:1.2rem;}
+.tb-r a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.72rem;transition:color .15s;}
+.tb-r a:hover{color:var(--gold);}
+.tb-r .divider{color:rgba(255,255,255,.25);}
 
-/* ── HERO / LANDING ── */
+/* ════ HEADER ════ */
+.site-header{
+  background:#fff;border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:300;
+}
+.header-inner{
+  max-width:1280px;margin:0 auto;padding:1rem 6%;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;
+}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.brand-logo{
+  width:48px;height:48px;flex-shrink:0;
+  background:var(--primary);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.brand-logo::before{
+  content:'';position:absolute;inset:3px;
+  border:1.5px solid rgba(255,255,255,.4);border-radius:50%;
+}
+.brand-logo span{
+  font-family:'Fraunces',serif;font-size:1rem;font-weight:700;
+  color:#fff;letter-spacing:1px;position:relative;
+}
+.brand-text{display:flex;flex-direction:column;max-width:240px;}
+.brand-name{
+  font-family:'Fraunces',serif;font-size:.82rem;font-weight:700;
+  color:var(--primary-dark);line-height:1.3;letter-spacing:-.1px;
+}
+.brand-sub{font-size:.68rem;color:var(--text-light);margin-top:2px;text-transform:uppercase;letter-spacing:.8px;font-weight:500;}
+
+.main-nav{display:flex;list-style:none;align-items:center;gap:.2rem;}
+.main-nav a{
+  color:var(--text);text-decoration:none;
+  font-size:.88rem;font-weight:500;
+  padding:.55rem .95rem;border-radius:var(--r);
+  transition:all .15s;position:relative;
+}
+.main-nav a:hover{color:var(--primary);}
+.main-nav a.cta{
+  background:var(--primary);color:#fff;
+  padding:.55rem 1.4rem;font-weight:600;margin-left:.5rem;
+}
+.main-nav a.cta:hover{background:var(--primary-dark);color:#fff;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;}
+.burger span{width:22px;height:2px;background:var(--primary-dark);border-radius:2px;}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#fff;z-index:400;padding:5rem 6% 2rem;}
+.mobile-nav.open{display:flex;flex-direction:column;}
+.mobile-nav a{padding:1rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);font-size:1.1rem;font-weight:500;}
+.mobile-nav .close{position:absolute;top:1.5rem;right:6%;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text);}
+
+/* ════ HERO ════ */
 .hero{
-  min-height:100vh;background:var(--dark);
-  display:flex;align-items:center;position:relative;overflow:hidden;padding-top:68px;
+  position:relative;
+  background:linear-gradient(135deg,#001a3e 0%,#002347 40%,#003c7e 100%);
+  overflow:hidden;min-height:72vh;
+  display:flex;align-items:center;
 }
-.hero-photo-bg{
-  position:absolute;right:0;top:0;bottom:0;width:52%;
-  background:url('Easter Convention Poster (4).png') center/cover no-repeat;
-  opacity: 1;
-}
-.hero-photo-bg::after{
+.hero::before{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(to right, var(--dark) 0%, rgba(13,17,23,0.5) 50%, transparent 100%);
+  background:
+    radial-gradient(ellipse 800px 600px at 80% 20%,rgba(40,151,232,.15) 0%,transparent 60%),
+    radial-gradient(ellipse 600px 400px at 10% 80%,rgba(201,162,39,.08) 0%,transparent 60%);
 }
-.hero-photo-bg::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to top, var(--dark) 0%, transparent 20%);
-  z-index:1;
-}
-.hero-overlay{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 55% 100% at 0% 50%, rgba(13,92,58,0.3) 0%, transparent 60%);
-}
-.hero-grid-lines{
-  position:absolute;inset:0;opacity:0.03;
+.hero::after{
+  content:'';position:absolute;inset:0;opacity:.04;
   background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);
   background-size:60px 60px;
 }
 .hero-content{
   position:relative;z-index:2;
-  width:90%;max-width:1200px;margin:0 auto;
-  padding:5rem 0;
+  max-width:1280px;margin:0 auto;padding:3rem 6%;width:100%;
+  display:grid;grid-template-columns:1fr 460px;gap:3.5rem;align-items:center;
 }
-.hero-left{max-width:580px;}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  background:rgba(201,144,26,0.15);border:1px solid rgba(201,144,26,0.3);
-  color:#E8A825;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1.8px;
-  padding:0.4rem 1rem;border-radius:100px;margin-bottom:1.5rem;
+.hero-text{}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  color:rgba(255,255,255,.7);font-size:.72rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:2.5px;margin-bottom:1rem;
 }
-.hero-badge::before{content:'';width:6px;height:6px;background:#E8A825;border-radius:50%;animation:blink 2s infinite;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--gold);}
 .hero-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(3rem,5.5vw,5rem);color:#fff;line-height:1.08;margin-bottom:1.2rem;
+  font-family:'Fraunces',serif;
+  font-size:clamp(2.8rem,5vw,4.2rem);
+  color:#fff;font-weight:800;line-height:1;
+  letter-spacing:-2px;margin-bottom:1rem;
 }
-.hero-title em{font-style:italic;color:var(--gold);}
+.ht-line{display:block;}
+.ht-first{
+  display:block;font-weight:300;font-style:italic;
+  font-size:.42em;color:rgba(255,255,255,.65);
+  letter-spacing:4px;text-transform:uppercase;
+  margin-bottom:.05em;
+}
+.ht-last{
+  display:block;font-weight:800;
+  text-transform:uppercase;letter-spacing:-2px;
+}
+.ht-amp{
+  display:block;font-family:'Fraunces',serif;
+  font-style:italic;font-weight:400;
+  color:var(--gold);font-size:.38em;
+  letter-spacing:5px;text-transform:uppercase;
+  margin:.2em 0;opacity:.9;
+}
+.hero-role{
+  font-size:.95rem;color:rgba(255,255,255,.6);
+  font-weight:400;letter-spacing:.3px;margin-bottom:1.2rem;
+  padding-bottom:1.2rem;border-bottom:1px solid rgba(255,255,255,.1);
+}
 .hero-slogan{
-  font-size:1.15rem;color:rgba(255,255,255,0.65);
-  line-height:1.75;margin-bottom:2.5rem;max-width:480px;
+  font-family:'Fraunces',serif;
+  font-style:italic;font-size:1.4rem;font-weight:400;
+  color:#fff;line-height:1.5;
+  margin-bottom:1.4rem;max-width:540px;
+  position:relative;padding-left:1.5rem;
 }
-.hero-slogan strong{color:rgba(255,255,255,0.9);font-weight:600;}
-.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;}
-.btn-engage{
-  background:var(--gold);color:var(--dark);
-  padding:1rem 2.2rem;border-radius:var(--radius);
-  font-size:1rem;font-weight:700;text-decoration:none;border:none;cursor:pointer;
-  transition:all 0.25s;display:inline-flex;align-items:center;gap:0.6rem;
-  box-shadow:0 4px 20px rgba(201,144,26,0.35);
+.hero-slogan::before{
+  content:'';position:absolute;left:0;top:.4rem;bottom:.4rem;
+  width:3px;background:var(--gold);
 }
-.btn-engage:hover{background:#E8A825;transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,144,26,0.45);}
-.btn-programme{
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.8rem;}
+.btn-primary{
+  background:var(--gold);color:var(--primary-dark);
+  padding:1rem 2rem;border-radius:var(--r);
+  font-weight:600;font-size:.92rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all .2s;border:none;cursor:pointer;
+  box-shadow:0 4px 14px rgba(201,162,39,.3);
+}
+.btn-primary:hover{background:#d4ad2c;transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,162,39,.4);}
+.btn-secondary{
   background:transparent;color:#fff;
-  padding:1rem 2.2rem;border-radius:var(--radius);
-  font-size:1rem;font-weight:600;text-decoration:none;
-  border:1.5px solid rgba(255,255,255,0.3);cursor:pointer;
-  transition:all 0.25s;display:inline-flex;align-items:center;gap:0.6rem;
+  padding:1rem 2rem;border-radius:var(--r);
+  font-weight:500;font-size:.92rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(255,255,255,.25);transition:all .2s;
 }
-.btn-programme:hover{border-color:#fff;background:rgba(255,255,255,0.06);}
-.hero-stats{
-  display:flex;gap:0;
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
-  border-radius:var(--radius);overflow:hidden;max-width:460px;
-}
-.hstat{flex:1;padding:1.2rem 1rem;text-align:center;border-right:1px solid rgba(255,255,255,0.06);}
-.hstat:last-child{border-right:none;}
-.hstat-n{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#fff;}
-.hstat-l{font-size:0.72rem;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.9px;margin-top:0.15rem;}
-.hero-scroll{
-  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:0.5rem;z-index:2;
-}
-.hero-scroll span{font-size:0.7rem;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;}
-.scroll-arrow{width:24px;height:24px;border-right:2px solid rgba(255,255,255,0.3);border-bottom:2px solid rgba(255,255,255,0.3);transform:rotate(45deg);animation:scrollDown 1.5s infinite;}
-@keyframes scrollDown{0%,100%{transform:rotate(45deg) translate(0,0);opacity:1;}50%{transform:rotate(45deg) translate(4px,4px);opacity:0.4;}}
+.btn-secondary:hover{border-color:#fff;background:rgba(255,255,255,.06);}
+.hero-meta{display:flex;gap:2.5rem;flex-wrap:wrap;}
+.hero-meta-item{}
+.hero-meta-label{font-size:.65rem;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;margin-bottom:4px;}
+.hero-meta-value{color:#fff;font-size:.95rem;font-weight:500;}
 
-/* ── SECTIONS ── */
-.section{padding:6rem 5%;}
-.section-inner{max-width:1200px;margin:0 auto;}
-.section-label{font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;color:var(--green-mid);margin-bottom:0.7rem;}
-.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.9rem);line-height:1.15;margin-bottom:0.8rem;}
-.section-desc{color:var(--gray-mid);font-size:1rem;line-height:1.75;max-width:580px;}
-.divider{width:48px;height:3px;background:var(--gold);margin:1.1rem 0 1.8rem;border-radius:2px;}
-
-/* ── BIOGRAPHIE ── */
-.bio-section{background:var(--white);}
-.bio-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:5rem;align-items:start;margin-top:3rem;}
-.bio-photo-wrap{position:relative;}
-.bio-photo-wrap img{width:100%;border-radius:20px;object-fit:cover;aspect-ratio:4/5;display:block;}
-.bio-badge{
-  position:absolute;bottom:-1.2rem;right:-1.2rem;
-  background:var(--dark);color:#fff;padding:1.2rem 1.5rem;
-  border-radius:var(--radius);text-align:center;box-shadow:0 8px 28px rgba(0,0,0,0.25);
+/* Hero candidates panel */
+.hero-panel{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;padding:1.5rem;
+  backdrop-filter:blur(10px);
 }
-.bio-badge-n{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1;}
-.bio-badge-t{font-size:0.72rem;color:rgba(255,255,255,0.55);margin-top:0.2rem;}
-.bio-values{display:flex;gap:0.75rem;flex-wrap:wrap;margin:1.5rem 0 1.8rem;}
-.bio-val{
-  background:var(--green-light);color:var(--green);
-  padding:0.35rem 0.9rem;border-radius:100px;font-size:0.8rem;font-weight:600;
-}
-.bio-timeline{display:flex;flex-direction:column;gap:0;}
-.tl-item{display:grid;grid-template-columns:80px 1fr;gap:1.2rem;padding:1.2rem 0;border-bottom:1px solid rgba(0,0,0,0.06);}
-.tl-item:last-child{border-bottom:none;}
-.tl-year{font-family:'Playfair Display',serif;font-size:0.85rem;font-weight:700;color:var(--green-mid);padding-top:3px;}
-.tl-text{font-size:0.92rem;line-height:1.6;color:var(--gray-dark);}
-.tl-text strong{color:var(--dark);font-weight:600;}
-
-/* ── PROGRAMME ── */
-.programme-section{background:var(--gray-light);}
-.prog-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem;}
-.programme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;}
-.prog-card{
-  background:#fff;border-radius:var(--radius);padding:2rem;
-  border:1px solid rgba(0,0,0,0.06);transition:all 0.3s;
-  position:relative;overflow:hidden;
-}
-.prog-card::after{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--green-mid),var(--gold));
-  transform:scaleX(0);transform-origin:left;transition:transform 0.35s;
-}
-.prog-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.1);}
-.prog-card:hover::after{transform:scaleX(1);}
-.prog-icon{width:50px;height:50px;background:var(--green-light);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1.2rem;}
-.prog-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:0.6rem;}
-.prog-text{color:var(--gray-mid);font-size:0.88rem;line-height:1.65;}
-.prog-num{
-  position:absolute;top:1.5rem;right:1.5rem;
-  font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;
-  color:rgba(0,0,0,0.04);line-height:1;
-}
-
-/* ── ACTUALITES ── */
-.actu-section{background:#fff;}
-.actu-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:2rem;margin-top:3rem;}
-.actu-main{border-radius:20px;overflow:hidden;background:var(--dark);position:relative;min-height:420px;cursor:pointer;}
-.actu-main img{width:100%;height:100%;object-fit:cover;display:block;opacity:0.7;transition:opacity 0.3s;}
-.actu-main:hover img{opacity:0.85;}
-.actu-main-overlay{
-  position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(to top,rgba(13,17,23,0.97) 0%,rgba(13,17,23,0.5) 60%,transparent 100%);
-  padding:2rem;
-}
-.actu-tag{display:inline-block;background:var(--gold);color:var(--dark);font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:0.3rem 0.8rem;border-radius:4px;margin-bottom:0.8rem;}
-.actu-main-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;line-height:1.3;margin-bottom:0.5rem;}
-.actu-date{font-size:0.8rem;color:rgba(255,255,255,0.45);}
-.actu-side{display:flex;flex-direction:column;gap:1rem;}
-.actu-card{
-  border-radius:var(--radius);overflow:hidden;background:var(--gray-light);
-  display:grid;grid-template-columns:110px 1fr;cursor:pointer;transition:all 0.2s;
-}
-.actu-card:hover{transform:translateX(4px);}
-.actu-card img{width:110px;height:100%;object-fit:cover;display:block;}
-.actu-card-body{padding:1rem;}
-.actu-card-tag{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green-mid);margin-bottom:0.4rem;}
-.actu-card-title{font-size:0.88rem;font-weight:600;line-height:1.4;color:var(--dark);margin-bottom:0.4rem;}
-.actu-card-date{font-size:0.75rem;color:var(--gray-mid);}
-
-/* ── AGENDA ── */
-.agenda-section{background:var(--dark);}
-.agenda-section .section-title{color:#fff;}
-.agenda-section .section-desc{color:rgba(255,255,255,0.45);}
-.agenda-section .section-label{color:var(--gold);}
-.agenda-list{display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.04);border-radius:var(--radius);overflow:hidden;margin-top:3rem;}
-.agenda-item{
-  background:rgba(255,255,255,0.03);padding:1.7rem 2rem;
-  display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:2rem;
-  border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.2s;cursor:pointer;
-}
-.agenda-item:hover{background:rgba(255,255,255,0.07);}
-.agenda-item:last-child{border-bottom:none;}
-.ag-date{text-align:center;}
-.ag-day{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:#fff;line-height:1;}
-.ag-month{font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;}
-.ag-event{font-weight:600;font-size:0.98rem;color:#fff;margin-bottom:0.3rem;}
-.ag-loc{font-size:0.83rem;color:rgba(255,255,255,0.4);}
-.ag-badge{padding:0.32rem 0.85rem;border-radius:100px;font-size:0.72rem;font-weight:600;white-space:nowrap;}
-.badge-grand{background:rgba(26,138,90,0.18);color:#4DC98A;border:1px solid rgba(26,138,90,0.3);}
-.badge-local{background:rgba(201,144,26,0.18);color:#E8A825;border:1px solid rgba(201,144,26,0.3);}
-.badge-media{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.1);}
-
-/* ── AGIR AVEC NOUS ── */
-.agir-section{background:var(--green-light);}
-.agir-intro{max-width:600px;margin-bottom:3.5rem;}
-.agir-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-bottom:4rem;}
-.agir-card{
-  background:#fff;border-radius:var(--radius);padding:2rem;
-  border:1px solid rgba(0,0,0,0.07);text-align:center;
-  transition:all 0.3s;cursor:pointer;
-}
-.agir-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.1);}
-.agir-icon{font-size:2.5rem;margin-bottom:1rem;}
-.agir-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:0.6rem;}
-.agir-text{font-size:0.85rem;color:var(--gray-mid);line-height:1.6;margin-bottom:1.2rem;}
-.agir-btn{
-  background:var(--green-mid);color:#fff;
-  padding:0.6rem 1.4rem;border-radius:8px;font-size:0.85rem;font-weight:600;
-  border:none;cursor:pointer;transition:background 0.2s;
-}
-.agir-btn:hover{background:var(--green);}
-
-/* Formulaire d'engagement */
-.engagement-form{
-  background:#fff;border-radius:20px;padding:3rem;
-  border:1px solid rgba(0,0,0,0.07);max-width:760px;margin:0 auto;
-}
-.engagement-form h3{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:0.5rem;}
-.engagement-form p{color:var(--gray-mid);font-size:0.95rem;margin-bottom:2rem;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
-.form-group{display:flex;flex-direction:column;gap:0.4rem;}
-.form-group label{font-size:0.82rem;font-weight:600;color:var(--gray-dark);}
-.form-group input, .form-group select{
-  padding:0.75rem 1rem;border:1.5px solid rgba(0,0,0,0.12);border-radius:8px;
-  font-size:0.92rem;font-family:'DM Sans',sans-serif;color:var(--dark);
-  outline:none;transition:border-color 0.2s;background:#fff;
-}
-.form-group input:focus, .form-group select:focus{border-color:var(--green-mid);}
-.form-actions{
+.hero-panel-h{
   display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:1rem;margin-top:1.5rem;
+  padding-bottom:1rem;margin-bottom:1.2rem;
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
+.hero-panel-title{font-size:.7rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:1.8px;}
+.hero-panel-status{
+  display:flex;align-items:center;gap:6px;
+  font-size:.7rem;color:rgba(255,255,255,.5);
+}
+.hero-panel-status::before{
+  content:'';width:6px;height:6px;background:#22c55e;border-radius:50%;
+  animation:pulse 2s infinite;box-shadow:0 0 8px rgba(34,197,94,.6);
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-cand{
+  display:grid;grid-template-columns:90px 1fr;gap:1rem;align-items:center;
+  padding:1rem 0;
+}
+.hero-cand+.hero-cand{border-top:1px solid rgba(255,255,255,.06);}
+.hero-cand-img{
+  width:90px;height:110px;border-radius:6px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);position:relative;
+}
+.hero-cand-img img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.hero-cand-role{
+  display:inline-block;font-size:.6rem;font-weight:700;
+  color:var(--gold);text-transform:uppercase;letter-spacing:1.2px;
+  margin-bottom:6px;
+}
+.hero-cand-name{font-family:'Fraunces',serif;font-size:1.15rem;color:#fff;font-weight:700;line-height:1.15;}
+.hero-cand-grade{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:4px;}
+.hero-panel-foot{
+  margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.hero-domain{font-size:.72rem;color:rgba(255,255,255,.45);}
+.hero-domain a{color:var(--gold);text-decoration:none;font-weight:600;}
+
+/* ════ SECTIONS GENERIC ════ */
+.section{padding:5.5rem 6%;}
+.container{max-width:1280px;margin:0 auto;}
+.section-head{max-width:780px;margin-bottom:3.5rem;}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;
+  color:var(--primary);margin-bottom:1rem;
+}
+.eyebrow::before{content:'';width:30px;height:1px;background:var(--gold);}
+.section-head.center .eyebrow{justify-content:center;}
+.section-title{
+  font-family:'Fraunces',serif;
+  font-size:clamp(1.9rem,3.2vw,2.8rem);
+  font-weight:700;line-height:1.15;color:var(--primary-dark);
+  letter-spacing:-.8px;margin-bottom:1rem;
+}
+.section-intro{color:var(--text-light);font-size:1.05rem;line-height:1.75;}
+
+/* ════ STATS BAR ════ */
+.stats-bar{
+  background:var(--cream);padding:3rem 6%;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.stats-grid{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;
+}
+.stat-card{text-align:center;}
+.stat-num{
+  font-family:'Fraunces',serif;font-size:2.6rem;font-weight:700;
+  color:var(--primary);line-height:1;margin-bottom:.5rem;
+  letter-spacing:-1px;
+}
+.stat-num small{font-size:1.4rem;color:var(--gold);}
+.stat-label{font-size:.78rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1.2px;font-weight:500;}
+
+/* ════ VISION ════ */
+.vision{background:#fff;}
+.vision-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:5rem;align-items:center;}
+.vision-quote-box{
+  background:var(--primary-dark);color:#fff;
+  padding:3.5rem;border-radius:8px;position:relative;
+  box-shadow:var(--shadow-lg);
+}
+.vision-quote-box::before{
+  content:'';position:absolute;top:1.5rem;left:1.5rem;
+  font-family:'Fraunces',serif;font-size:5rem;color:var(--gold);
+  line-height:1;opacity:.3;
+  content:'"';
+}
+.vision-q{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:1.4rem;line-height:1.5;font-weight:400;
+  margin-bottom:2rem;position:relative;z-index:1;
+}
+.vision-q strong{color:var(--gold);font-weight:600;font-style:normal;}
+.vision-attribution{
+  display:flex;align-items:center;gap:1rem;
+  padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.15);
+}
+.va-line{width:30px;height:1px;background:var(--gold);}
+.va-text{font-size:.78rem;color:rgba(255,255,255,.7);font-weight:500;text-transform:uppercase;letter-spacing:1.5px;}
+.vision-text p{font-size:1rem;line-height:1.85;color:var(--text-light);margin-bottom:1.2rem;}
+.vision-text p strong{color:var(--text);font-weight:600;}
+.vision-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;}
+.vfeat{padding:1rem;background:var(--light);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;}
+.vfeat-n{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;color:var(--primary);line-height:1;margin-bottom:4px;}
+.vfeat-t{font-size:.82rem;color:var(--text-light);font-weight:500;}
+
+/* ════ CANDIDATS ════ */
+.cand-section{background:var(--light);}
+.cand-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:1rem;}
+.cand-card{
+  background:#fff;border-radius:8px;overflow:hidden;
+  box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s;
+  border:1px solid var(--border);
+}
+.cand-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.cand-banner{
+  height:6px;background:linear-gradient(90deg,var(--primary),var(--accent));
+}
+.cand-banner.alt{background:linear-gradient(90deg,var(--gold),#d4ad2c);}
+.cand-head{
+  padding:2.5rem;display:grid;grid-template-columns:190px 1fr;gap:2rem;align-items:start;
+  border-bottom:1px solid var(--border);
+}
+.cand-photo{
+  width:190px;height:240px;border-radius:8px;overflow:hidden;
+  border:3px solid var(--cream);box-shadow:var(--shadow-lg);
+}
+.cand-photo img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.cand-poste{
+  display:inline-block;font-size:.65rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.8px;
+  color:var(--primary);background:var(--cream);
+  padding:.3rem .8rem;border-radius:100px;margin-bottom:.7rem;
+}
+.cand-poste.gold{color:var(--gold);background:var(--gold-light);}
+.cand-name{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;color:var(--primary-dark);line-height:1.15;}
+.cand-titre{font-size:.85rem;color:var(--text-light);margin-top:.4rem;}
+.cand-body{padding:2rem 2.5rem 2.5rem;}
+.cand-body p{font-size:.95rem;line-height:1.75;color:var(--text-light);margin-bottom:1rem;}
+.cand-engagements{
+  display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem;
+  padding-top:1.5rem;border-top:1px solid var(--border);
+}
+.eng-chip{
+  background:var(--cream);color:var(--primary-dark);
+  padding:.35rem .9rem;border-radius:100px;
+  font-size:.75rem;font-weight:600;
+  border:1px solid var(--border);
+}
+
+/* ════ PROGRAMME ════ */
+.programme{background:#fff;}
+.prog-layout{display:grid;grid-template-columns:280px 1fr;gap:3rem;margin-top:3rem;}
+.prog-sidebar{position:sticky;top:90px;align-self:start;}
+.prog-list{list-style:none;background:var(--light);border-radius:6px;padding:.5rem;border:1px solid var(--border);}
+.prog-item{
+  display:flex;align-items:center;gap:12px;
+  padding:.85rem 1rem;border-radius:var(--r);
+  cursor:pointer;transition:all .15s;
+  font-size:.86rem;color:var(--text-light);font-weight:500;
+}
+.prog-item:hover{background:#fff;color:var(--primary);}
+.prog-item.active{background:var(--primary);color:#fff;font-weight:600;}
+.prog-item.active .prog-num-mini{background:rgba(255,255,255,.2);color:#fff;}
+.prog-num-mini{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--cream);color:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:700;font-family:'Fraunces',serif;
+  flex-shrink:0;transition:all .15s;
+}
+.prog-content{}
+.prog-panel{display:none;animation:fadeIn .3s ease;}
+.prog-panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.prog-header{
+  border-left:4px solid var(--gold);padding-left:1.5rem;
+  margin-bottom:2rem;
+}
+.prog-axe{font-size:.7rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:.5rem;}
+.prog-h2{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:700;color:var(--primary-dark);line-height:1.2;margin-bottom:.8rem;letter-spacing:-.5px;}
+.prog-objectif{font-size:1rem;line-height:1.7;color:var(--text-light);font-style:italic;}
+.prog-body{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;}
+.prog-col h4{
+  font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--primary-dark);padding-bottom:.75rem;margin-bottom:1.2rem;
+  border-bottom:2px solid var(--gold);
+}
+.prog-actions{list-style:none;}
+.prog-actions li{
+  position:relative;padding:.5rem 0 .5rem 1.5rem;
+  font-size:.88rem;line-height:1.65;color:var(--text-light);
+  border-bottom:1px dashed var(--border);
+}
+.prog-actions li:last-child{border-bottom:none;}
+.prog-actions li::before{
+  content:'';position:absolute;left:0;top:1rem;
+  width:6px;height:6px;background:var(--gold);border-radius:50%;
+}
+.prog-indic{display:flex;flex-direction:column;gap:.6rem;}
+.indic-card{
+  background:var(--light);border:1px solid var(--border);
+  border-left:3px solid var(--primary);
+  padding:.85rem 1rem;border-radius:0 4px 4px 0;
+  font-size:.84rem;line-height:1.55;color:var(--text);
+}
+.indic-card strong{color:var(--primary);font-weight:600;}
+
+/* ════ PROJETS STRUCTURANTS ════ */
+.projets{background:var(--cream);}
+.ps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:1.5rem;margin-top:3rem;}
+.ps-card{
+  background:#fff;border-radius:8px;overflow:hidden;
+  border:1px solid var(--border);transition:all .25s;
+  display:flex;flex-direction:column;
+}
+.ps-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.ps-cover{
+  height:140px;position:relative;display:flex;align-items:flex-end;padding:1.5rem;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;
+}
+.ps-cover::before{
+  content:'';position:absolute;top:1rem;right:1rem;
+  font-family:'Fraunces',serif;font-size:5rem;font-weight:700;
+  color:rgba(255,255,255,.12);line-height:1;
+}
+.ps-card:nth-child(1) .ps-cover::before{content:'01';}
+.ps-card:nth-child(2) .ps-cover::before{content:'02';}
+.ps-card:nth-child(3) .ps-cover::before{content:'03';}
+.ps-card:nth-child(4) .ps-cover::before{content:'04';}
+.ps-card:nth-child(5) .ps-cover::before{content:'05';}
+.ps-card:nth-child(2) .ps-cover{background:linear-gradient(135deg,#1d6f9c,#2897e8);}
+.ps-card:nth-child(3) .ps-cover{background:linear-gradient(135deg,#5d4a1f,#a08234);}
+.ps-card:nth-child(4) .ps-cover{background:linear-gradient(135deg,#3a2f6b,#5b4e9e);}
+.ps-card:nth-child(5) .ps-cover{background:linear-gradient(135deg,#7d2929,#b3403e);}
+.ps-tag{
+  display:inline-block;background:rgba(255,255,255,.18);backdrop-filter:blur(10px);
+  padding:.25rem .8rem;border-radius:100px;font-size:.65rem;
+  font-weight:700;text-transform:uppercase;letter-spacing:1.2px;
+  margin-bottom:.8rem;border:1px solid rgba(255,255,255,.2);
+}
+.ps-title{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:700;line-height:1.3;}
+.ps-body{padding:1.6rem;flex:1;display:flex;flex-direction:column;}
+.ps-body>p{font-size:.88rem;color:var(--text-light);line-height:1.7;margin-bottom:1.2rem;}
+.ps-actions{list-style:none;margin-top:auto;padding-top:1.2rem;border-top:1px solid var(--border);}
+.ps-actions li{
+  font-size:.8rem;line-height:1.5;color:var(--text-light);
+  padding:.35rem 0 .35rem 1.1rem;position:relative;
+}
+.ps-actions li::before{
+  content:'→';position:absolute;left:0;color:var(--gold);font-weight:bold;
+}
+
+/* ════ GANTT ════ */
+.gantt-section{background:#fff;}
+.gantt-wrap{margin-top:3rem;overflow-x:auto;border:1px solid var(--border);border-radius:8px;background:#fff;box-shadow:var(--shadow);}
+.gantt{width:100%;min-width:900px;border-collapse:collapse;font-size:.78rem;}
+.gantt thead tr:first-child th{background:var(--primary-dark);color:#fff;padding:.7rem .9rem;font-weight:600;font-size:.75rem;text-align:left;}
+.gantt thead tr:first-child th.year{background:var(--primary);text-align:center;font-size:.72rem;letter-spacing:.5px;border-left:1px solid rgba(255,255,255,.15);}
+.gantt thead tr:nth-child(2) th{background:#003566;color:rgba(255,255,255,.85);padding:.45rem;font-weight:500;font-size:.68rem;text-align:center;border-left:1px solid rgba(255,255,255,.1);}
+.gantt td{padding:.55rem .9rem;border-bottom:1px solid var(--border);font-size:.78rem;vertical-align:middle;}
+.gantt td.label{color:var(--text-light);font-weight:400;font-size:.78rem;}
+.gantt td.ps-row{background:var(--cream);color:var(--primary-dark);font-weight:700;font-size:.82rem;padding:.7rem .9rem;}
+.gantt tr:hover td:not(.ps-row){background:var(--light);}
+.gantt .gbar{height:14px;border-radius:2px;}
+.gantt .c1{background:linear-gradient(90deg,var(--primary),var(--accent));}
+.gantt .c2{background:linear-gradient(90deg,#1d6f9c,#2897e8);}
+.gantt .c3{background:linear-gradient(90deg,#5d4a1f,#a08234);}
+.gantt .c4{background:linear-gradient(90deg,#3a2f6b,#5b4e9e);}
+.gantt .c5{background:linear-gradient(90deg,#7d2929,#b3403e);}
+
+/* ════ AGENDA ════ */
+.agenda-section{background:var(--cream);}
+.agenda-list{margin-top:3rem;}
+.ag-card{
+  background:#fff;border:1px solid var(--border);
+  border-radius:6px;padding:1.5rem 2rem;
+  display:grid;grid-template-columns:90px 1fr auto;
+  align-items:center;gap:2rem;
+  margin-bottom:1rem;transition:all .2s;
+}
+.ag-card:hover{border-color:var(--primary);box-shadow:var(--shadow);transform:translateX(4px);}
+.ag-card.highlight{background:var(--primary-dark);color:#fff;border-color:var(--primary-dark);}
+.ag-card.highlight .ag-day{color:var(--gold);}
+.ag-card.highlight .ag-month{color:rgba(255,255,255,.7);}
+.ag-card.highlight .ag-ev{color:#fff;}
+.ag-card.highlight .ag-loc{color:rgba(255,255,255,.55);}
+.ag-day{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;color:var(--primary);line-height:1;text-align:center;}
+.ag-month{font-size:.7rem;color:var(--text-light);text-transform:uppercase;letter-spacing:1.2px;font-weight:600;text-align:center;margin-top:4px;}
+.ag-ev{font-weight:600;font-size:1rem;color:var(--text);margin-bottom:.25rem;font-family:'Fraunces',serif;}
+.ag-loc{font-size:.83rem;color:var(--text-light);}
+.ag-loc strong{color:var(--gold);font-weight:600;}
+.ag-pill{
+  padding:.3rem .85rem;border-radius:100px;font-size:.68rem;font-weight:700;
+  white-space:nowrap;letter-spacing:.5px;text-transform:uppercase;
+}
+.pill-vote{background:var(--gold);color:var(--primary-dark);}
+.pill-event{background:var(--cream);color:var(--primary);border:1px solid var(--border);}
+.pill-info{background:#E0F2FE;color:#075985;}
+
+/* ════ ENGAGEMENT ════ */
+.engagement{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);color:#fff;}
+.engagement .eyebrow{color:var(--gold);}
+.engagement .eyebrow::before{background:var(--gold);}
+.engagement .section-title{color:#fff;}
+.engagement .section-intro{color:rgba(255,255,255,.7);}
+.eng-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;margin-top:3rem;align-items:start;}
+.eng-options{display:flex;flex-direction:column;gap:1rem;}
+.eng-option{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:6px;padding:1.4rem 1.6rem;
+  display:flex;gap:1.2rem;align-items:flex-start;
+  transition:all .2s;cursor:pointer;
+}
+.eng-option:hover{background:rgba(255,255,255,.09);transform:translateX(4px);border-color:rgba(201,162,39,.3);}
+.eng-option-num{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--gold);color:var(--primary-dark);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-size:1rem;font-weight:700;
+  flex-shrink:0;
+}
+.eng-option h4{font-size:1rem;font-weight:600;color:#fff;margin-bottom:.3rem;font-family:'Fraunces',serif;}
+.eng-option p{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.55;}
+.eng-form{
+  background:#fff;color:var(--text);
+  border-radius:8px;padding:2.5rem;
+  box-shadow:var(--shadow-lg);
+}
+.eng-form h3{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;color:var(--primary-dark);margin-bottom:.3rem;}
+.eng-form .sub{font-size:.88rem;color:var(--text-light);margin-bottom:1.8rem;}
+.fg{margin-bottom:1rem;}
+.fg label{display:block;font-size:.75rem;font-weight:600;color:var(--text);margin-bottom:.4rem;}
+.fg input,.fg select,.fg textarea{
+  width:100%;padding:.8rem 1rem;
+  background:var(--light);border:1px solid var(--border);
+  border-radius:var(--r);color:var(--text);
+  font-size:.9rem;font-family:'Inter',sans-serif;
+  outline:none;transition:all .15s;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--primary);background:#fff;box-shadow:0 0 0 3px rgba(0,60,126,.08);}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
 .btn-submit{
-  background:var(--green);color:#fff;padding:0.9rem 2.5rem;
-  border-radius:var(--radius);font-size:0.95rem;font-weight:700;
-  border:none;cursor:pointer;transition:all 0.25s;
+  width:100%;padding:1rem;border-radius:var(--r);
+  background:var(--primary);color:#fff;
+  font-size:.92rem;font-weight:600;border:none;cursor:pointer;
+  transition:all .2s;margin-top:.5rem;
+  font-family:'Inter',sans-serif;
 }
-.btn-submit:hover{background:var(--green-mid);transform:translateY(-2px);}
-.form-note{font-size:0.78rem;color:var(--gray-mid);}
+.btn-submit:hover{background:var(--primary-dark);transform:translateY(-1px);}
+.form-note{font-size:.75rem;color:var(--text-light);margin-top:1rem;text-align:center;}
 
-/* ── TEMOIGNAGES ── */
-.temo-section{background:var(--white);}
-.temo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem;}
-.temo-card{background:var(--gray-light);border-radius:var(--radius);padding:2rem;}
-.temo-stars{color:var(--gold);font-size:0.95rem;letter-spacing:2px;margin-bottom:1rem;}
-.temo-text{font-size:0.93rem;line-height:1.72;color:var(--gray-dark);font-style:italic;margin-bottom:1.5rem;}
-.temo-author{display:flex;align-items:center;gap:0.75rem;}
-.temo-av{width:42px;height:42px;border-radius:50%;background:var(--green-mid);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:0.82rem;flex-shrink:0;}
-.temo-name{font-weight:600;font-size:0.88rem;}
-.temo-role{font-size:0.78rem;color:var(--gray-mid);}
-
-/* ── FOOTER ── */
-footer{background:var(--dark);padding:4rem 5% 2rem;}
-.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
-.footer-logo{font-family:'Playfair Display',serif;font-size:1.6rem;color:#fff;margin-bottom:0.9rem;}
-.footer-logo span{color:var(--gold);}
-.footer-about{color:rgba(255,255,255,0.38);font-size:0.87rem;line-height:1.72;}
-.footer-col h4{color:#fff;font-size:0.82rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;}
+/* ════ FOOTER ════ */
+footer{background:#000d24;color:#fff;padding:4.5rem 6% 2rem;}
+.footer-top{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.07);}
+.foot-brand{}
+.foot-name{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:700;color:#fff;margin-bottom:.5rem;}
+.foot-tagline{font-style:italic;font-family:'Fraunces',serif;color:var(--gold);font-size:.92rem;margin-bottom:1.2rem;}
+.foot-desc{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:1.5rem;}
+.foot-domain{display:inline-flex;align-items:center;gap:8px;padding:.5rem 1rem;background:rgba(255,255,255,.06);border-radius:var(--r);font-size:.8rem;color:var(--gold);text-decoration:none;}
+.foot-domain:hover{background:rgba(201,162,39,.15);}
+.footer-col h4{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#fff;margin-bottom:1.2rem;}
 .footer-col ul{list-style:none;}
-.footer-col ul li{margin-bottom:0.6rem;}
-.footer-col ul a{color:rgba(255,255,255,0.38);text-decoration:none;font-size:0.87rem;transition:color 0.2s;}
-.footer-col ul a:hover{color:#fff;}
-.footer-bottom{max-width:1200px;margin:0 auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-.footer-note{color:rgba(255,255,255,0.22);font-size:0.78rem;}
-.social-links{display:flex;gap:0.65rem;}
-.social-link{width:36px;height:36px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.85rem;transition:all 0.2s;}
-.social-link:hover{border-color:rgba(255,255,255,0.35);color:#fff;}
-
-/* ── DEMO BADGE ── */
-.demo-tag{position:fixed;bottom:1.2rem;right:1.2rem;background:var(--gold);color:var(--dark);padding:0.5rem 1.1rem;border-radius:100px;font-size:0.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;z-index:999;box-shadow:0 4px 16px rgba(201,144,26,0.4);}
-
-/* ── FADE IN ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
-.hero-left>*{animation:fadeUp 0.8s both;}
-.hero-left>*:nth-child(1){animation-delay:0.05s;}
-.hero-left>*:nth-child(2){animation-delay:0.15s;}
-.hero-left>*:nth-child(3){animation-delay:0.25s;}
-.hero-left>*:nth-child(4){animation-delay:0.35s;}
-.hero-left>*:nth-child(5){animation-delay:0.45s;}
-
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .bio-grid{grid-template-columns:1fr;gap:3rem;}
-  .actu-grid{grid-template-columns:1fr;}
-  .footer-inner{grid-template-columns:1fr 1fr;}
-  .form-row{grid-template-columns:1fr;}
+.footer-col li{margin-bottom:.6rem;}
+.footer-col a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.85rem;transition:color .15s;}
+.footer-col a:hover{color:var(--gold);}
+.footer-bottom{max-width:1280px;margin:2rem auto 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:.78rem;color:rgba(255,255,255,.35);}
+.socials{display:flex;gap:.5rem;}
+.soc{
+  width:34px;height:34px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.5);font-size:.85rem;text-decoration:none;
+  transition:all .15s;
 }
-@media(max-width:640px){
-  .nav-links{display:none;}
-  .hamburger{display:flex;}
-  
-  /* ── CORRECTION APPORTÉE ICI POUR LE MODE MOBILE ── */
-  .hero-photo-bg {
-    width: 100%; 
-    opacity: 1; /* L'image s'affiche maintenant à 100% de sa clarté naturelle */
-    background-position: center center; /* Cadre le centre de l'affiche parfaitement */
-    background-size: cover;
-  }
-  
-  /* Ajustement précis du fondu noir pour garder le texte lisible sans flouter l'image */
-  .hero-photo-bg::after {
-    background: linear-gradient(to top, var(--dark) 10%, rgba(13,17,23,0.6) 70%, rgba(13,17,23,0.1) 100%);
-  }
-  
-  .agenda-item{grid-template-columns:70px 1fr;}
-  .ag-badge{display:none;}
-  .footer-inner{grid-template-columns:1fr;}
-  .bio-badge{right:0;bottom:-1rem;}
-  .engagement-form{padding:1.8rem;}
+.soc:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,162,39,.05);}
+
+/* ════ DEMO ════ */
+.demo-tag{
+  position:fixed;bottom:1.2rem;right:1.2rem;
+  background:var(--gold);color:var(--primary-dark);
+  padding:.5rem 1rem;border-radius:100px;
+  font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  z-index:999;box-shadow:0 4px 16px rgba(201,162,39,.45);
+}
+
+/* ════ REVEAL ════ */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ════ RESPONSIVE ════ */
+@media(max-width:1024px){
+  .hero-content{grid-template-columns:1fr;gap:3rem;}
+  .vision-grid{grid-template-columns:1fr;gap:3rem;}
+  .prog-layout{grid-template-columns:1fr;}
+  .prog-sidebar{position:static;}
+  .prog-list{display:grid;grid-template-columns:repeat(2,1fr);}
+  .eng-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:720px){
+  .topbar{display:none;}
+  .main-nav{display:none;}
+  .burger{display:flex;}
+  .hero-content{padding:3rem 6%;}
+  .hero-title{font-size:2.4rem;}
+  .vision-quote-box{padding:2rem;}
+  .vision-q{font-size:1.15rem;}
+  .vision-features{grid-template-columns:1fr;}
+  .cand-grid{grid-template-columns:1fr;gap:1.5rem;}
+  .cand-head{grid-template-columns:110px 1fr;gap:1.2rem;padding:1.5rem;}
+  .cand-photo{width:110px;height:140px;}
+  .cand-body{padding:1.5rem;}
+  .prog-list{grid-template-columns:1fr;}
+  .prog-body{grid-template-columns:1fr;gap:2rem;}
+  .ag-card{grid-template-columns:70px 1fr;gap:1rem;padding:1.2rem;}
+  .ag-pill{display:none;}
+  .eng-form{padding:1.8rem;}
+  .footer-top{grid-template-columns:1fr;gap:2rem;}
+  .fg-row{grid-template-columns:1fr;}
+  .section{padding:4rem 6%;}
 }
 </style>
 </head>
 <body>
 
-<div class="demo-tag">🔒 Démo</div>
+<div class="demo-tag">Démo</div>
 
-<nav id="mainNav">
-  <a href="#accueil" class="nav-logo">Elect<span>Voix</span></a>
-  <ul class="nav-links">
-    <li><a href="#accueil">Accueil</a></li>
-    <li><a href="#candidat">Le Candidat</a></li>
-    <li><a href="#programme">Programme</a></li>
-    <li><a href="#actualites">Actualités</a></li>
-    <li><a href="#agenda">Agenda</a></li>
-    <li><a href="#agir" class="nav-cta">Agir avec nous</a></li>
-  </ul>
-  <div class="hamburger" id="menuBtn" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+<!-- ════════ TOPBAR ════════ -->
+<div class="topbar">
+  <div class="tb-l">
+    <span>📍 <strong>Dakar, Sénégal</strong></span>
+    <span>📞 +221 33 824 00 00</span>
+    <span>✉️ contact@madyibrahima4esp2026.com</span>
   </div>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#accueil" onclick="closeMenu()">Accueil</a>
-  <a href="#candidat" onclick="closeMenu()">Le Candidat</a>
-  <a href="#programme" onclick="closeMenu()">Programme</a>
-  <a href="#actualites" onclick="closeMenu()">Actualités</a>
-  <a href="#agenda" onclick="closeMenu()">Agenda</a>
-  <a href="#agir" onclick="closeMenu()">Agir avec nous</a>
+  <div class="tb-r">
+    <a href="http://www.esp.sn" target="_blank">ESP</a>
+    <span class="divider">|</span>
+    <a href="http://www.ucad.sn" target="_blank">UCAD</a>
+    <span class="divider">|</span>
+    <a href="#">FR</a>
+  </div>
 </div>
 
-<section class="hero" id="accueil">
-  <div class="hero-photo-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-grid-lines"></div>
+<!-- ════════ HEADER ════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="brand">
+      <img src="logo.jpg"  style="height:45px; width:auto;">
+      <div class="brand-text">
+        <span class="brand-name">ESP-Elections du Directeur et du Directeur des Etudes</span>
+        <span class="brand-sub">Programme ESP/UCAD 2026</span>
+      </div>
+    </a>
+    <ul class="main-nav">
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#candidats">Les Candidats</a></li>
+      <li><a href="#programme">Programme</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#calendrier">Calendrier</a></li>
+      <li><a href="#agenda">Agenda</a></li>
+      <li><a href="#engagement" class="cta">Nous soutenir</a></li>
+    </ul>
+    <button class="burger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="close" onclick="closeMenu()">✕</button>
+  <a href="#vision" onclick="closeMenu()">Vision</a>
+  <a href="#candidats" onclick="closeMenu()">Les Candidats</a>
+  <a href="#programme" onclick="closeMenu()">Programme</a>
+  <a href="#projets" onclick="closeMenu()">Projets structurants</a>
+  <a href="#calendrier" onclick="closeMenu()">Calendrier de mise en œuvre</a>
+  <a href="#agenda" onclick="closeMenu()">Agenda électoral</a>
+  <a href="#engagement" onclick="closeMenu()">Nous soutenir</a>
+</div>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero" id="top">
   <div class="hero-content">
-    <div class="hero-left">
-      <div class="hero-badge">#Élection 2026</div>
+    <div class="hero-text">
+      <div class="hero-eyebrow">ESP / UCAD — Juillet 2026</div>
       <h1 class="hero-title">
-        Pour une nation<br>
-        forte et <em>unie</em>
+        <span class="ht-line">
+          <span class="ht-first">Mady</span>
+          <span class="ht-last">CISSÉ</span>
+        </span>
+        <span class="ht-amp">&amp;</span>
+        <span class="ht-line">
+          <span class="ht-first">Ibrahima</span>
+          <span class="ht-last">FALL</span>
+        </span>
       </h1>
-      <p class="hero-slogan">
-        <strong>Le changement commence ici.</strong><br>
-        Rejoignez le mouvement qui place chaque citoyen au cœur de chaque décision. 
-        Ensemble, bâtissons l'avenir que nous méritons.
-      </p>
-      <div class="hero-cta">
-        <a href="#agir" class="btn-engage">✊ S'engager</a>
-        <a href="#programme" class="btn-programme">📋 Découvrir le programme →</a>
+      <p class="hero-role">Candidats Directeur &amp; Directeur des Études — École Supérieure Polytechnique</p>
+      <p class="hero-slogan">Ensemble vers une nouvelle dynamique de performances</p>
+      <div class="hero-actions">
+        <a href="#engagement" class="btn-primary">Nous soutenir <span>→</span></a>
+        <a href="#programme" class="btn-secondary">Découvrir le programme</a>
       </div>
-      <div class="hero-stats">
-        <div class="hstat">
-          <div class="hstat-n">47%</div>
-          <div class="hstat-l">Intentions de vote</div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Élection</div>
+          <div class="hero-meta-value">Juillet 2026</div>
         </div>
-        <div class="hstat">
-          <div class="hstat-n">120k</div>
-          <div class="hstat-l">Supporters</div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Mandat</div>
+          <div class="hero-meta-value">2026 — 2029</div>
         </div>
-        <div class="hstat">
-          <div class="hstat-n">64</div>
-          <div class="hstat-l">Villes couvertes</div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Axes stratégiques</div>
+          <div class="hero-meta-value">7 priorités</div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="hero-scroll">
-    <span>Défiler</span>
-    <div class="scroll-arrow"></div>
-  </div>
-</section>
-
-<section class="section bio-section" id="candidat">
-  <div class="section-inner">
-    <div class="section-label">Le Candidat</div>
-    <h2 class="section-title">Mamadou Diallo —<br>Un homme de conviction</h2>
-    <div class="divider"></div>
-    <div class="bio-grid">
-      <div class="bio-photo-wrap">
-        <img src="Easter Convention Poster (4).png" alt="Portrait de Mamadou Diallo, candidat">
-        <div class="bio-badge">
-          <div class="bio-badge-n">25</div>
-          <div class="bio-badge-t">ans d'engagement</div>
+    <div class="hero-panel">
+      <div class="hero-panel-h">
+        <span class="hero-panel-title">Liste des candidats</span>
+        <span class="hero-panel-status">Campagne en cours</span>
+      </div>
+      <div class="hero-cand">
+        <div class="hero-cand-img"><img src="ciss.png" alt="Mady CISSE"></div>
+        <div>
+          <span class="hero-cand-role">Candidat Directeur</span>
+          <div class="hero-cand-name">Mady CISSE</div>
+          <div class="hero-cand-grade">Professeur Titulaire</div>
         </div>
       </div>
-      <div>
-        <p style="color:var(--gray-mid);line-height:1.8;font-size:1rem;margin-bottom:1.4rem;">
-          Né dans une famille modeste de Thiès, <strong style="color:var(--dark);">Mamadou Diallo</strong> a consacré sa vie entière au service de sa nation. Juriste de formation, militant de longue date, il incarne une nouvelle génération de dirigeants alliant compétence, intégrité et vision.
-        </p>
-        <p style="color:var(--gray-mid);line-height:1.8;font-size:1rem;margin-bottom:1.6rem;">
-          Son engagement ne s'est jamais démenti : des quartiers populaires aux plus hautes sphères de l'État, il a toujours défendu les mêmes valeurs — justice, solidarité et souveraineté nationale.
-        </p>
-        <div class="bio-values">
-          <span class="bio-val">Justice</span>
-          <span class="bio-val">Solidarité</span>
-          <span class="bio-val">Souveraineté</span>
-          <span class="bio-val">Transparence</span>
-          <span class="bio-val">Unité nationale</span>
+      <div class="hero-cand">
+        <div class="hero-cand-img"><img src="fall.png" alt="Ibrahima FALL" style="filter:saturate(.88) brightness(1.02);"></div>
+        <div>
+          <span class="hero-cand-role">Candidat Dir. des Études</span>
+          <div class="hero-cand-name">Ibrahima FALL</div>
+          <div class="hero-cand-grade">Professeur Titulaire</div>
         </div>
-        <div class="bio-timeline">
-          <div class="tl-item">
-            <div class="tl-year">2001</div>
-            <div class="tl-text"><strong>Diplômé</strong> en Droit Public et Sciences Politiques, Université Cheikh Anta Diop, Dakar</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">2005–12</div>
-            <div class="tl-text"><strong>Directeur</strong> de l'Agence Nationale du Développement Communautaire</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">2012–19</div>
-            <div class="tl-text"><strong>Ministre délégué</strong> chargé des Affaires sociales et de la Solidarité nationale</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">2019–24</div>
-            <div class="tl-text"><strong>Président</strong> du Conseil Économique, Social et Environnemental</div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-year">2025</div>
-            <div class="tl-text"><strong>Lancement</strong> de la candidature présidentielle — Mouvement « Nation Debout »</div>
-          </div>
-        </div>
+      </div>
+      <div class="hero-panel-foot">
+        <span class="hero-domain">Site officiel :</span>
+        <a href="https://www.madyibrahima4esp2026.com" target="_blank" style="color:var(--gold);text-decoration:none;font-weight:600;font-size:.78rem;">madyibrahima4esp2026.com</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section programme-section" id="programme">
-  <div class="section-inner">
-    <div class="prog-header">
-      <div>
-        <div class="section-label">Notre vision</div>
-        <h2 class="section-title">Un programme<br>au service du peuple</h2>
-        <div class="divider"></div>
-        <p class="section-desc">Six priorités nationales pour transformer notre pays en une nation prospère, juste et souveraine d'ici 2031.</p>
-      </div>
-      <a href="#agir" class="btn-engage" style="height:fit-content;">Télécharger le programme complet</a>
+<!-- ════════ STATS ════════ -->
+<section class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-num">60<small>+</small></div>
+      <div class="stat-label">Ans d'excellence ESP</div>
     </div>
-    <div class="programme-grid">
-      <div class="prog-card">
-        <div class="prog-num">01</div>
-        <div class="prog-icon">🎓</div>
-        <div class="prog-title">Éducation pour tous</div>
-        <p class="prog-text">Scolarisation gratuite jusqu'au baccalauréat, modernisation de 3 000 établissements et formation de 50 000 nouveaux enseignants dans les 5 premières années.</p>
-      </div>
-      <div class="prog-card">
-        <div class="prog-num">02</div>
-        <div class="prog-icon">🏥</div>
-        <div class="prog-title">Santé universelle</div>
-        <p class="prog-text">Couverture médicale à 100% de la population, construction de 200 centres de santé en zones rurales, et gratuité des soins maternels et pédiatriques.</p>
-      </div>
-      <div class="prog-card">
-        <div class="prog-num">03</div>
-        <div class="prog-icon">⚡</div>
-        <div class="prog-title">Énergie & environnement</div>
-        <p class="prog-text">Électrification totale du territoire via les énergies renouvelables. Objectif : 70% d'énergie propre en 2030 et réduction de 40% des émissions de CO₂.</p>
-      </div>
-      <div class="prog-card">
-        <div class="prog-num">04</div>
-        <div class="prog-icon">💼</div>
-        <div class="prog-title">Emploi & économie</div>
-        <p class="prog-text">Création de 500 000 emplois en 5 ans, soutien aux PME nationales, zones franches pour l'industrie locale et attractivité des investissements étrangers responsables.</p>
-      </div>
-      <div class="prog-card">
-        <div class="prog-num">05</div>
-        <div class="prog-icon">⚖️</div>
-        <div class="prog-title">Justice & sécurité</div>
-        <p class="prog-text">Réforme profonde pour une justice indépendante et équitable. Renforcement des forces de sécurité au service du citoyen, avec tolérance zéro pour la corruption.</p>
-      </div>
-      <div class="prog-card">
-        <div class="prog-num">06</div>
-        <div class="prog-icon">🌾</div>
-        <div class="prog-title">Agriculture souveraine</div>
-        <p class="prog-text">Soutien aux agriculteurs, modernisation des filières agricoles et atteinte de l'autosuffisance alimentaire nationale d'ici 2030.</p>
-      </div>
+    <div class="stat-card">
+      <div class="stat-num">7</div>
+      <div class="stat-label">Axes stratégiques</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Projets structurants</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Ans de mise en œuvre</div>
     </div>
   </div>
 </section>
 
-<section class="section actu-section" id="actualites">
-  <div class="section-inner">
-    <div class="section-label">Actualités</div>
-    <h2 class="section-title">Dernières nouvelles<br>de la campagne</h2>
-    <div class="divider"></div>
-    <div class="actu-grid">
-      <div class="actu-main">
-        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80" alt="Grand meeting national">
-        <div class="actu-main-overlay">
-          <span class="actu-tag">À la une</span>
-          <div class="actu-main-title">Grand meeting national : 80 000 personnes mobilisées à Dakar pour « Nation Debout »</div>
-          <div class="actu-date">📅 28 Mai 2026</div>
+<!-- ════════ VISION ════════ -->
+<section class="section vision" id="vision">
+  <div class="container">
+    <div class="vision-grid">
+      <div class="vision-quote-box reveal">
+        <p class="vision-q">Positionner l'ESP au Sénégal et en Afrique comme <strong>établissement leader de l'ingénierie et du management</strong>, valorisant le savoir par l'industrie et l'entrepreneuriat au service des organisations publiques et privées.</p>
+        <div class="vision-attribution">
+          <div class="va-line"></div>
+          <div class="va-text">Notre vision — Programme 2026</div>
         </div>
       </div>
-      <div class="actu-side">
-        <div class="actu-card">
-          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&q=80" alt="Forum économique">
-          <div class="actu-card-body">
-            <div class="actu-card-tag">Économie</div>
-            <div class="actu-card-title">Mamadou Diallo dévoile son plan pour 500 000 emplois en 5 ans</div>
-            <div class="actu-card-date">24 Mai 2026</div>
-          </div>
-        </div>
-        <div class="actu-card">
-          <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=300&q=80" alt="Santé">
-          <div class="actu-card-body">
-            <div class="actu-card-tag">Santé</div>
-            <div class="actu-card-title">La couverture médicale universelle, axe central du programme de santé</div>
-            <div class="actu-card-date">20 Mai 2026</div>
-          </div>
-        </div>
-        <div class="actu-card">
-          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=300&q=80" alt="Énergie">
-          <div class="actu-card-body">
-            <div class="actu-card-tag">Environnement</div>
-            <div class="actu-card-title">Vision énergétique : cap sur 70% d'énergies renouvelables d'ici 2030</div>
-            <div class="actu-card-date">16 Mai 2026</div>
-          </div>
+      <div class="vision-text reveal">
+        <div class="eyebrow">Notre Vision</div>
+        <h2 class="section-title">Un projet collectif et<br>ambitieux pour l'ESP</h2>
+        <p>Dans un contexte d'élargissement de la carte universitaire et de réformes profondes de l'enseignement supérieur au Sénégal, l'ESP doit opérer une mutation en s'appuyant sur ses <strong>60 années d'excellence et d'innovation</strong>.</p>
+        <p>Notre programme s'articule autour de <strong>7 axes stratégiques</strong> assortis d'indicateurs mesurables, d'une théorie du changement claire et de <strong>5 projets structurants</strong> concrets.</p>
+        <div class="vision-features">
+          <div class="vfeat"><div class="vfeat-n">7</div><div class="vfeat-t">Axes stratégiques avec indicateurs</div></div>
+          <div class="vfeat"><div class="vfeat-n">5</div><div class="vfeat-t">Projets structurants prioritaires</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ════════ CANDIDATS ════════ -->
+<section class="section cand-section" id="candidats">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">Les Candidats</div>
+      <h2 class="section-title">Deux Professeurs Titulaires<br>unis pour l'avenir de l'ESP</h2>
+      <p class="section-intro">Unis dans un même projet, ils s'engagent à servir l'École dans l'unité, la concorde et la transparence la plus totale. Leur style de management repose sur l'écoute, la confiance et la mobilisation des compétences internes.</p>
+    </div>
+    <div class="cand-grid">
+      <article class="cand-card reveal">
+        <div class="cand-banner"></div>
+        <div class="cand-head">
+          <div class="cand-photo"><img src="ciss.png" alt="Mady CISSE"></div>
+          <div>
+            <span class="cand-poste">Candidat Directeur de l'ESP</span>
+            <h3 class="cand-name">Mady CISSE</h3>
+            <p class="cand-titre">Professeur Titulaire · École Supérieure Polytechnique, UCAD</p>
+          </div>
+        </div>
+        <div class="cand-body">
+          <p>Professeur Titulaire à l'ESP, Mady CISSE porte le projet de direction avec la conviction que l'établissement a toutes les ressources pour conjuguer excellence académique, innovations et rayonnement international.</p>
+          <p>Son engagement porte sur la gouvernance administrative et financière transparente, la structuration de la communication institutionnelle et l'amélioration de l'environnement de travail et de vie.</p>
+          <div class="cand-engagements">
+            <span class="eng-chip">Gouvernance</span>
+            <span class="eng-chip">Transparence</span>
+            <span class="eng-chip">Innovation</span>
+            <span class="eng-chip">Excellence</span>
+          </div>
+        </div>
+      </article>
+      <article class="cand-card reveal">
+        <div class="cand-banner alt"></div>
+        <div class="cand-head">
+          <div class="cand-photo"><img src="fall.png" alt="Ibrahima FALL" style="filter:saturate(.88) brightness(1.02);"></div>
+          <div>
+            <span class="cand-poste gold">Candidat Directeur des Études</span>
+            <h3 class="cand-name">Ibrahima FALL</h3>
+            <p class="cand-titre">Professeur Titulaire · École Supérieure Polytechnique, UCAD</p>
+          </div>
+        </div>
+        <div class="cand-body">
+          <p>Professeur Titulaire à l'ESP, Ibrahima FALL prend en charge la direction pédagogique avec l'ambition de restructurer l'offre de formation, instaurer la bimodalité intégrant TICEs et IA, et créer de nouvelles filières.</p>
+          <p>Son action couvrira la recherche, l'innovation, la coopération internationale et le renforcement de la Forge Ndiaga NDIAYE pour développer l'entrepreneuriat étudiant.</p>
+          <div class="cand-engagements">
+            <span class="eng-chip">Pédagogie</span>
+            <span class="eng-chip">Recherche</span>
+            <span class="eng-chip">Entrepreneuriat</span>
+            <span class="eng-chip">International</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PROGRAMME — 7 AXES ════════ -->
+<section class="section programme" id="programme">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Programme — 7 Axes Stratégiques</div>
+      <h2 class="section-title">Un programme détaillé,<br>chiffré et mesurable</h2>
+      <p class="section-intro">Chaque axe stratégique est décliné en un objectif clair, des actions concrètes à réaliser et des indicateurs de résultats datés et quantifiés.</p>
+    </div>
+
+    <div class="prog-layout">
+      <aside class="prog-sidebar">
+        <ul class="prog-list" id="progList">
+          <li class="prog-item active" onclick="showAxe(0)"><span class="prog-num-mini">01</span><span>Gouvernance</span></li>
+          <li class="prog-item" onclick="showAxe(1)"><span class="prog-num-mini">02</span><span>Ressources humaines</span></li>
+          <li class="prog-item" onclick="showAxe(2)"><span class="prog-num-mini">03</span><span>Finances &amp; Marchés</span></li>
+          <li class="prog-item" onclick="showAxe(3)"><span class="prog-num-mini">04</span><span>Communication</span></li>
+          <li class="prog-item" onclick="showAxe(4)"><span class="prog-num-mini">05</span><span>Environnement</span></li>
+          <li class="prog-item" onclick="showAxe(5)"><span class="prog-num-mini">06</span><span>Pédagogie</span></li>
+          <li class="prog-item" onclick="showAxe(6)"><span class="prog-num-mini">07</span><span>Recherche &amp; Entrepreneuriat</span></li>
+        </ul>
+      </aside>
+
+      <div class="prog-content">
+
+        <div class="prog-panel active">
+          <div class="prog-header">
+            <div class="prog-axe">Axe stratégique 01</div>
+            <h3 class="prog-h2">Gouvernance administrative et financière</h3>
+            <p class="prog-objectif">Instaurer une gouvernance administrative et financière claire, transparente et efficace, en conformité avec la réglementation.</p>
+          </div>
+          <div class="prog-body">
+            <div class="prog-col">
+              <h4>Actions à réaliser</h4>
+              <ul class="prog-actions">
+                <li>Renforcer le pilotage stratégique et mettre en place un système d'information décisionnel</li>
+                <li>Réorganiser les services pour plus d'efficience opérationnelle</li>
+                <li>Rédiger et publier un manuel des procédures administratives, pédagogiques et financières</li>
+                <li>Diagnostiquer l'existant (SODEP, EVOLUS, PGI) et déployer un SI intégré et cohérent</li>
+                <li>Digitaliser les flux administratifs et financiers pour réduire les délais et assurer la traçabilité</li>
+                <li>Mettre en place des tableaux de bord stratégiques avec revues trimestrielles</li>
+                <li>Instaurer un système de suivi-évaluation (reporting semestriel)</li>
+              </ul>
+            </div>
+            <div class="prog-col">
+              <h4>Indicateurs de résultats</h4>
+              <div class="prog-indic">
+                <div class="indic-card"><strong>Déc. 2026</strong> — Un nouvel organigramme validé par le Conseil d'établissement</div>
+                <div class="indic-card"><strong>Oct. 2027</strong> — Manuel des procédures et système de suivi-évaluation opérationnels</div>
+                <div class="indic-card"><strong>Oct. 2027</strong> — Projet d'établissement validé et mis en œuvre</div>
+                <div class="indic-card"><strong>2027</strong> — Plateforme numérique de gestion administrative et financière en service</div>
+                <div class="indic-card"><strong>Trimestriel</strong> — Bilan financier transmis aux départements</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="prog-panel">
+          <div class="prog-header">
+            <div class="prog-axe">Axe stratégique 02</div>
+            <h3 class="prog-h2">Ressources humaines</h3>
+            <p class="prog-objectif">Attirer, intégrer, former et fidéliser le personnel (PER, PATS, vacataires) tout en renforçant la cohésion et la performance collective de l'ESP.</p>
+          </div>
+          <div class="prog-body">
+            <div class="prog-col">
+              <h4>Actions à réaliser</h4>
+              <ul class="prog-actions">
+                <li>Réaliser l'audit du personnel et créer une base de données actualisée des profils/compétences</li>
+                <li>Assurer l'adéquation Homme-Poste</li>
+                <li>Organiser l'accueil et l'intégration des nouvelles recrues</li>
+                <li>Établir un plan de formation continue et de carrière</li>
+                <li>Améliorer la prise en charge des vacataires (régularisations, statut)</li>
+                <li>Développer une stratégie de recrutement pour PER et PATS</li>
+                <li>Mettre en place des actions pour le bien-être et la cohésion sociale</li>
+              </ul>
+            </div>
+            <div class="prog-col">
+              <h4>Indicateurs de résultats</h4>
+              <div class="prog-indic">
+                <div class="indic-card"><strong>Juil. 2027</strong> — Un SIRH fonctionnel</div>
+                <div class="indic-card"><strong>Juil. 2027</strong> — Plan de renforcement de capacités PATS/PER disponible</div>
+                <div class="indic-card"><strong>Janv. 2027</strong> — Livret et procédure d'accueil PER et PATS</div>
+                <div class="indic-card"><strong>20%</strong> du PER et PATS bénéficient d'une formation continue annuellement</div>
+                <div class="indic-card"><strong>Nov. 2026</strong> — Comité des sages pour le dialogue social installé</div>
+                <div class="indic-card">Au moins <strong>5 événements</strong> sportifs/socio-culturels organisés annuellement</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="prog-panel">
+          <div class="prog-header">
+            <div class="prog-axe">Axe stratégique 03</div>
+            <h3 class="prog-h2">Ressources financières et marchés</h3>
+            <p class="prog-objectif">Assurer une gestion financière transparente et conforme à la réglementation, garantissant la disponibilité des ressources et la maîtrise des marchés.</p>
+          </div>
+          <div class="prog-body">
+            <div class="prog-col">
+              <h4>Actions à réaliser</h4>
+              <ul class="prog-actions">
+                <li>Instaurer une comptabilité analytique pour chaque département</li>
+                <li>Élaborer un calendrier budgétaire annuel</li>
+                <li>Mettre en place des procédures standardisées pour les marchés et achats</li>
+                <li>Renforcer les capacités du comité des marchés sur les procédures de passation</li>
+                <li>Instaurer des dispositifs de contrôle et d'audit interne</li>
+                <li>Digitaliser les processus financiers et des marchés</li>
+                <li>Diversifier et mobiliser des sources de financement externes</li>
+              </ul>
+            </div>
+            <div class="prog-col">
+              <h4>Indicateurs de résultats</h4>
+              <div class="prog-indic">
+                <div class="indic-card"><strong>Budget 2027</strong> — Calendrier budgétaire validé et mis en œuvre</div>
+                <div class="indic-card"><strong>Juil. 2027</strong> — Manuel des procédures de passation des marchés disponible</div>
+                <div class="indic-card"><strong>Juil. 2027</strong> — Rapport semestriel de contrôle et d'audit interne</div>
+                <div class="indic-card"><strong>≥ 80%</strong> des marchés du PPM exécutés et payés en 2027</div>
+                <div class="indic-card"><strong>30%</strong> du budget 2028 issu de la vente d'expertise et partenariats</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="prog-panel">
+          <div class="prog-header">
+            <div class="prog-axe">Axe stratégique 04</div>
+            <h3 class="prog-h2">Communication interne et externe</h3>
+            <p class="prog-objectif">Améliorer la circulation de l'information en interne et renforcer la visibilité et l'attractivité de l'ESP pour mobiliser des partenaires et ressources.</p>
+          </div>
+          <div class="prog-body">
+            <div class="prog-col">
+              <h4>Actions à réaliser</h4>
+              <ul class="prog-actions">
+                <li>Mettre en place un service de communication vivace et dynamique</li>
+                <li>Déployer un plan de communication et renforcer la présence digitale</li>
+                <li>Construire un portail web et des outils numériques</li>
+                <li>Assurer une présence de l'ESP dans les médias et événements</li>
+                <li>Mettre en place des routines d'information interne (newsletters, réunions)</li>
+                <li>Développer des actions de lobbying et relations partenariales</li>
+                <li>Organiser des activités citoyennes au profit de la communauté</li>
+              </ul>
+            </div>
+            <div class="prog-col">
+              <h4>Indicateurs de résultats</h4>
+              <div class="prog-indic">
+                <div class="indic-card"><strong>Janv. 2027</strong> — Service de communication opérationnel</div>
+                <div class="indic-card"><strong>Janv. 2027</strong> — Plan de communication validé et déployé</div>
+                <div class="indic-card"><strong>2027</strong> — Portail web et au moins 4 outils de communication lancés</div>
+                <div class="indic-card">Une réunion d'information organisée <strong>tous les 2 mois</strong></div>
+                <div class="indic-card">Au moins <strong>2 activités citoyennes</strong> organisées chaque année</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="prog-panel">
+          <div class="prog-header">
+            <div class="prog-axe">Axe stratégique 05</div>
+            <h3 class="prog-h2">Environnement de travail et cadre de vie</h3>
+            <p class="prog-objectif">Offrir un environnement sécurisé, fonctionnel et attractif améliorant les conditions d'enseignement, de recherche et de vie du personnel et des étudiants.</p>
+          </div>
+          <div class="prog-body">
+            <div class="prog-col">
+              <h4>Actions à réaliser</h4>
+              <ul class="prog-actions">
+                <li>Programme de rénovation et d'extension des infrastructures existantes</li>
+                <li>Construction de nouveaux bâtiments : Tour pédagogie, Tour recherche/innovation/entrepreneuriat</li>
+                <li>Construire une bibliothèque moderne avec espace numérique</li>
+                <li>Rénover l'infrastructure réseau et construire un data center</li>
+                <li>Améliorer la sécurité et l'aménagement (accès, parking, espaces de vie)</li>
+                <li>Aménager et équiper les salles de classe et bureaux</li>
+                <li>Promouvoir l'autonomie en énergie et eau</li>
+              </ul>
+            </div>
+            <div class="prog-col">
+              <h4>Indicateurs de résultats</h4>
+              <div class="prog-indic">
+                <div class="indic-card"><strong>Déc. 2026</strong> — Un bureau et une salle de classe témoins disponibles</div>
+                <div class="indic-card"><strong>2027</strong> — 30% des salles de cours et bureaux aménagés et équipés</div>
+                <div class="indic-card"><strong>2028</strong> — Projet de la Tour de la recherche, innovation et entrepreneuriat lancé</div>
+                <div class="indic-card"><strong>2028</strong> — Data center installé et fonctionnel</div>
+                <div class="indic-card">Au bout de <strong>3 ans</strong>, toutes les salles et bureaux aménagés</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="prog-panel">
+          <div class="prog-header">
+            <div class="prog-axe">Axe stratégique 06</div>
+            <h3 class="prog-h2">Pédagogie</h3>
+            <p class="prog-objectif">Mettre en place une nouvelle architecture et offre pédagogique améliorant la qualité des apprentissages, l'efficacité de l'encadrement et l'employabilité des diplômés.</p>
+          </div>
+          <div class="prog-body">
+            <div class="prog-col">
+              <h4>Actions à réaliser</h4>
+              <ul class="prog-actions">
+                <li>Créer une Direction des études</li>
+                <li>Mettre en place des classes préparatoires intégrées (ECG et scientifique)</li>
+                <li>Instaurer la bimodalité dans les enseignements pour l'ensemble des parcours</li>
+                <li>Réviser et actualiser les programmes ; créer de nouvelles filières</li>
+                <li>Former les enseignants sur les méthodes pédagogiques actives et outils numériques</li>
+                <li>Élaborer la stratégie d'intégration des TICEs et de l'IA</li>
+                <li>Structurer et promouvoir la mobilité entrante et sortante</li>
+              </ul>
+            </div>
+            <div class="prog-col">
+              <h4>Indicateurs de résultats</h4>
+              <div class="prog-indic">
+                <div class="indic-card"><strong>Oct. 2028</strong> — Direction des études opérationnelle</div>
+                <div class="indic-card"><strong>Oct. 2028</strong> — Classe prépa ECG et classe prépa scientifique lancées</div>
+                <div class="indic-card"><strong>2028</strong> — Au moins 5 nouvelles filières lancées</div>
+                <div class="indic-card"><strong>Oct. 2028</strong> — Bimodalité effective dans 50% des départements</div>
+                <div class="indic-card"><strong>Oct. 2029</strong> — Bimodalité effective dans tous les départements</div>
+                <div class="indic-card">Toutes les formations accréditées dans un délai de <strong>3 ans</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="prog-panel">
+          <div class="prog-header">
+            <div class="prog-axe">Axe stratégique 07</div>
+            <h3 class="prog-h2">Recherche, Innovation &amp; Entrepreneuriat</h3>
+            <p class="prog-objectif">Assurer une recherche innovante et développer un écosystème d'entrepreneuriat transformant les compétences en projets viables au service de la communauté.</p>
+          </div>
+          <div class="prog-body">
+            <div class="prog-col">
+              <h4>Actions à réaliser</h4>
+              <ul class="prog-actions">
+                <li>Équiper les laboratoires et plateaux technologiques</li>
+                <li>Mettre en place un Centre de ressources, d'innovation et d'expertise (CRIE)</li>
+                <li>Renforcer et promouvoir la Forge Ndiaga NDIAYE</li>
+                <li>Lancer un programme d'accompagnement entrepreneurial (coaching, bootcamps)</li>
+                <li>Mettre en place un dispositif de financement d'amorçage</li>
+                <li>Développer des partenariats nationaux et internationaux</li>
+                <li>Établir un réseau d'alumni entrepreneurs pour mentoring</li>
+              </ul>
+            </div>
+            <div class="prog-col">
+              <h4>Indicateurs de résultats</h4>
+              <div class="prog-indic">
+                <div class="indic-card"><strong>Budget 2027</strong> — Fonds de financement de la recherche augmenté de 50%</div>
+                <div class="indic-card">Au moins <strong>5 startups</strong> incubées dans la Forge par an dès 2027</div>
+                <div class="indic-card"><strong>100M FCFA</strong> injectés en amorçage dans 1 an, 150M dans 2 ans</div>
+                <div class="indic-card"><strong>Oct. 2028</strong> — Réseau alumni entrepreneurs lancé</div>
+                <div class="indic-card">Au moins <strong>5 missions d'expertise</strong> organisées par année</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PROJETS STRUCTURANTS ════════ -->
+<section class="section projets" id="projets">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">Projets Structurants</div>
+      <h2 class="section-title">5 chantiers prioritaires<br>à horizon 2026 — 2029</h2>
+      <p class="section-intro">Des projets concrets, planifiés et mesurables pour transformer durablement l'ESP et concrétiser notre vision.</p>
+    </div>
+    <div class="ps-grid">
+      <article class="ps-card reveal">
+        <div class="ps-cover">
+          <div><span class="ps-tag">Projet structurant</span><div class="ps-title">Gouvernance transparente et efficace</div></div>
+        </div>
+        <div class="ps-body">
+          <p>Mise en place d'un système de gouvernance réglementé : organigramme, manuels de procédures, SI intégré, politique sociale et partenariale.</p>
+          <ul class="ps-actions">
+            <li>Pilotage stratégique et SI décisionnel</li>
+            <li>Digitalisation des flux administratifs et financiers</li>
+            <li>Audit du personnel et plan de formation</li>
+            <li>Procédures standardisées pour les marchés</li>
+            <li>Comité des sages pour le dialogue social</li>
+          </ul>
+        </div>
+      </article>
+      <article class="ps-card reveal">
+        <div class="ps-cover">
+          <div><span class="ps-tag">Projet structurant</span><div class="ps-title">Communication &amp; visibilité de l'ESP</div></div>
+        </div>
+        <div class="ps-body">
+          <p>Structuration de la communication interne et externe, portail web institutionnel, présence digitale et actions de lobbying partenariales.</p>
+          <ul class="ps-actions">
+            <li>Service/bureau de communication dédié</li>
+            <li>Portail web + 4 outils numériques</li>
+            <li>Plan de communication validé et déployé</li>
+            <li>Réunions d'information bimestrielles</li>
+            <li>Actions de lobbying trimestrielles</li>
+          </ul>
+        </div>
+      </article>
+      <article class="ps-card reveal">
+        <div class="ps-cover">
+          <div><span class="ps-tag">Projet structurant</span><div class="ps-title">Environnement de travail &amp; équipements</div></div>
+        </div>
+        <div class="ps-body">
+          <p>Rénovation, construction de nouveaux bâtiments (Tour pédagogie, Tour recherche), data center, bibliothèque moderne et équipement des laboratoires.</p>
+          <ul class="ps-actions">
+            <li>Programme rénovation/extension des infrastructures</li>
+            <li>Construction Tour recherche &amp; innovation (2028)</li>
+            <li>Bibliothèque moderne avec ressources numériques</li>
+            <li>Data center fonctionnel en 2028</li>
+            <li>Autonomie en énergie et eau</li>
+          </ul>
+        </div>
+      </article>
+      <article class="ps-card reveal">
+        <div class="ps-cover">
+          <div><span class="ps-tag">Projet structurant</span><div class="ps-title">Restructuration de l'offre pédagogique</div></div>
+        </div>
+        <div class="ps-body">
+          <p>Nouvelle architecture pédagogique : classes préparatoires, bimodalité TICEs/IA, 5 nouvelles filières, accréditation et mobilité internationale.</p>
+          <ul class="ps-actions">
+            <li>Classes prépa ECG et scientifique (2028)</li>
+            <li>Bimodalité dans tous les départements (2029)</li>
+            <li>Nouvelles filières : Architecture, Pétrole, Digital…</li>
+            <li>Studio d'enregistrement + technopédagogie</li>
+            <li>Conventions, stages et suivi des diplômés</li>
+          </ul>
+        </div>
+      </article>
+      <article class="ps-card reveal">
+        <div class="ps-cover">
+          <div><span class="ps-tag">Projet structurant</span><div class="ps-title">Recherche, Innovation &amp; Entrepreneuriat</div></div>
+        </div>
+        <div class="ps-body">
+          <p>Renforcement de la Forge Ndiaga NDIAYE, création du CRIE, programme d'amorçage, réseau alumni entrepreneurs et coopération internationale.</p>
+          <ul class="ps-actions">
+            <li>Centre CRIE (ESP-Entreprise) opérationnel</li>
+            <li>Forge Ndiaga NDIAYE : 5 startups/an minimum</li>
+            <li>Bureau projets de recherche (veille, soumission)</li>
+            <li>Amorçage : 100M an 1, 150M an 2</li>
+            <li>Réseau alumni entrepreneurs lancé en Oct. 2028</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ GANTT ════════ -->
+<section class="section gantt-section" id="calendrier">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Calendrier de mise en œuvre</div>
+      <h2 class="section-title">Diagramme de Gantt<br>des projets structurants</h2>
+      <p class="section-intro">Planning trimestriel de réalisation des 5 projets structurants et de leurs extrants principaux sur 2026 — 2029.</p>
+    </div>
+    <div class="gantt-wrap reveal">
+      <table class="gantt">
+        <thead>
+          <tr>
+            <th style="width:28%">Projet / Extrant</th>
+            <th class="year" colspan="2">2026</th>
+            <th class="year" colspan="4">2027</th>
+            <th class="year" colspan="4">2028</th>
+            <th class="year" colspan="2">2029</th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>T3</th><th>T4</th>
+            <th>T1</th><th>T2</th><th>T3</th><th>T4</th>
+            <th>T1</th><th>T2</th><th>T3</th><th>T4</th>
+            <th>T1</th><th>T2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="ps-row" colspan="13">PS1 · Gouvernance transparente et efficace</td></tr>
+          <tr><td class="label">Manuel des procédures (admin, péda, financier, marchés)</td><td></td><td><div class="gbar c1" style="width:60%;"></div></td><td><div class="gbar c1"></div></td><td><div class="gbar c1"></div></td><td><div class="gbar c1" style="width:50%;"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="label">Organigramme validé par le Conseil</td><td><div class="gbar c1" style="width:60%;"></div></td><td><div class="gbar c1"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="label">Projet d'établissement validé</td><td></td><td></td><td><div class="gbar c1"></div></td><td><div class="gbar c1"></div></td><td><div class="gbar c1" style="width:60%;"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="label">Système d'information intégré</td><td></td><td></td><td><div class="gbar c1"></div></td><td><div class="gbar c1"></div></td><td><div class="gbar c1"></div></td><td><div class="gbar c1" style="width:50%;"></div></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="ps-row" colspan="13">PS2 · Communication &amp; visibilité</td></tr>
+          <tr><td class="label">Structure dédiée à la communication</td><td><div class="gbar c2" style="width:60%;"></div></td><td><div class="gbar c2"></div></td><td><div class="gbar c2" style="width:40%;"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="label">Portail web + outils numériques</td><td></td><td></td><td><div class="gbar c2"></div></td><td><div class="gbar c2"></div></td><td><div class="gbar c2"></div></td><td><div class="gbar c2" style="width:50%;"></div></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="ps-row" colspan="13">PS3 · Environnement de travail</td></tr>
+          <tr><td class="label">Bureau &amp; salle de classe témoins</td><td><div class="gbar c3" style="width:60%;"></div></td><td><div class="gbar c3"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="label">30% salles &amp; bureaux aménagés</td><td></td><td></td><td><div class="gbar c3"></div></td><td><div class="gbar c3"></div></td><td><div class="gbar c3"></div></td><td><div class="gbar c3" style="width:50%;"></div></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="label">Tour recherche &amp; innovation + Data center</td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="gbar c3"></div></td><td><div class="gbar c3"></div></td><td><div class="gbar c3"></div></td><td><div class="gbar c3" style="width:60%;"></div></td><td></td><td></td></tr>
+          <tr><td class="ps-row" colspan="13">PS4 · Restructuration pédagogique</td></tr>
+          <tr><td class="label">Manuel des procédures pédagogiques</td><td></td><td></td><td><div class="gbar c4"></div></td><td><div class="gbar c4"></div></td><td><div class="gbar c4" style="width:60%;"></div></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="label">Classes préparatoires (ECG + Scientifique)</td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="gbar c4"></div></td><td><div class="gbar c4"></div></td><td><div class="gbar c4" style="width:60%;"></div></td><td></td><td></td><td></td></tr>
+          <tr><td class="label">Bimodalité TICEs/IA — 50% départements</td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="gbar c4"></div></td><td><div class="gbar c4"></div></td><td><div class="gbar c4" style="width:50%;"></div></td><td></td><td></td><td></td></tr>
+          <tr><td class="label">Bimodalité 100% + 5 nouvelles filières</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="gbar c4"></div></td><td><div class="gbar c4" style="width:70%;"></div></td></tr>
+          <tr><td class="ps-row" colspan="13">PS5 · Recherche, Innovation &amp; Entrepreneuriat</td></tr>
+          <tr><td class="label">Dispositif veille/accompagnement chercheurs</td><td></td><td></td><td><div class="gbar c5"></div></td><td><div class="gbar c5"></div></td><td><div class="gbar c5"></div></td><td><div class="gbar c5" style="width:50%;"></div></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="label">Forge : 5 startups/an + financement amorçage</td><td></td><td></td><td><div class="gbar c5"></div></td><td><div class="gbar c5"></div></td><td><div class="gbar c5"></div></td><td><div class="gbar c5" style="width:60%;"></div></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td class="label">CRIE + Réseau alumni entrepreneurs</td><td></td><td></td><td></td><td></td><td></td><td></td><td><div class="gbar c5"></div></td><td><div class="gbar c5"></div></td><td><div class="gbar c5" style="width:60%;"></div></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ AGENDA ════════ -->
 <section class="section agenda-section" id="agenda">
-  <div class="section-inner">
-    <div class="section-label">Agenda</div>
-    <h2 class="section-title">Événements de campagne</h2>
-    <div class="divider" style="background:var(--gold);"></div>
-    <p class="section-desc">Rencontrez Mamadou Diallo lors de ses déplacements à travers tout le pays.</p>
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">Agenda Électoral</div>
+      <h2 class="section-title">Calendrier du processus<br>électoral ESP 2026</h2>
+      <p class="section-intro">Les étapes clés de l'élection du Directeur et du Directeur des Études de l'École Supérieure Polytechnique.</p>
+    </div>
     <div class="agenda-list">
-      <div class="agenda-item">
-        <div class="ag-date"><div class="ag-day">14</div><div class="ag-month">Juin 2026</div></div>
-        <div><div class="ag-event">Grand Meeting National — Stade Léopold Sédar Senghor</div><div class="ag-loc">📍 Dakar — 10h00 | Entrée libre</div></div>
-        <span class="ag-badge badge-grand">Grand meeting</span>
+      <div class="ag-card reveal">
+        <div><div class="ag-day">10</div><div class="ag-month">Juin 2026</div></div>
+        <div>
+          <div class="ag-ev">Dépôt officiel des candidatures</div>
+          <div class="ag-loc">📍 <strong>Rectorat UCAD</strong> — Service des Élections</div>
+        </div>
+        <span class="ag-pill pill-info">Candidatures</span>
       </div>
-      <div class="agenda-item">
-        <div class="ag-date"><div class="ag-day">19</div><div class="ag-month">Juin 2026</div></div>
-        <div><div class="ag-event">Caravane Populaire — Tournée Casamance</div><div class="ag-loc">📍 Ziguinchor — 09h00 | 5 quartiers</div></div>
-        <span class="ag-badge badge-local">Tournée locale</span>
+      <div class="ag-card reveal">
+        <div><div class="ag-day">14</div><div class="ag-month">Juin 2026</div></div>
+        <div>
+          <div class="ag-ev">Publication de la Profession de Foi et du Programme</div>
+          <div class="ag-loc">📍 <strong>Amphithéâtre ESP</strong> — 10h00 · Ouvert à tous</div>
+        </div>
+        <span class="ag-pill pill-event">Programme</span>
       </div>
-      <div class="agenda-item">
-        <div class="ag-date"><div class="ag-day">25</div><div class="ag-month">Juin 2026</div></div>
-        <div><div class="ag-event">Grand Débat Présidentiel — RTS 1</div><div class="ag-loc">📺 En direct national — 20h30</div></div>
-        <span class="ag-badge badge-media">Média</span>
+      <div class="ag-card reveal">
+        <div><div class="ag-day">18</div><div class="ag-month">Juin 2026</div></div>
+        <div>
+          <div class="ag-ev">Présentation aux membres PER, PATS et Étudiants</div>
+          <div class="ag-loc">📍 <strong>Salle du Conseil ESP</strong> — 14h30</div>
+        </div>
+        <span class="ag-pill pill-event">Réunion</span>
       </div>
-      <div class="agenda-item">
-        <div class="ag-date"><div class="ag-day">02</div><div class="ag-month">Juil 2026</div></div>
-        <div><div class="ag-event">Forum Économique — Emploi des Jeunes</div><div class="ag-loc">📍 Saint-Louis — Centre de Conférences</div></div>
-        <span class="ag-badge badge-local">Forum</span>
+      <div class="ag-card reveal">
+        <div><div class="ag-day">22</div><div class="ag-month">Juin 2026</div></div>
+        <div>
+          <div class="ag-ev">Débat contradictoire entre les listes candidates</div>
+          <div class="ag-loc">📍 <strong>Amphithéâtre principal ESP</strong> — 09h00</div>
+        </div>
+        <span class="ag-pill pill-event">Débat</span>
       </div>
-      <div class="agenda-item">
-        <div class="ag-date"><div class="ag-day">10</div><div class="ag-month">Juil 2026</div></div>
-        <div><div class="ag-event">Rassemblement Final — Clôture de Campagne</div><div class="ag-loc">📍 Place de l'Indépendance, Dakar — 16h00</div></div>
-        <span class="ag-badge badge-grand">Grand meeting</span>
+      <div class="ag-card highlight reveal">
+        <div><div class="ag-day">27</div><div class="ag-month">Juil. 2026</div></div>
+        <div>
+          <div class="ag-ev">🗳️ Jour du Vote — Élection Directeur &amp; Directeur des Études</div>
+          <div class="ag-loc">📍 <strong>ESP</strong> — Bureau de vote central · 08h00 à 16h00</div>
+        </div>
+        <span class="ag-pill pill-vote">Jour du vote</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section agir-section" id="agir">
-  <div class="section-inner">
-    <div class="agir-intro">
-      <div class="section-label">Agir avec nous</div>
-      <h2 class="section-title">Chaque geste<br>compte pour la nation</h2>
-      <div class="divider"></div>
-      <p class="section-desc">Il existe de nombreuses façons de contribuer à ce mouvement. Choisissez celle qui vous correspond et rejoignez des milliers de citoyens engagés.</p>
+<!-- ════════ ENGAGEMENT ════════ -->
+<section class="section engagement" id="engagement">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">Nous rejoindre</div>
+      <h2 class="section-title">Soutenez ce projet pour<br>l'avenir de l'ESP</h2>
+      <p class="section-intro">Plusieurs façons de soutenir notre candidature et de contribuer à la transformation de l'ESP. Chaque voix compte.</p>
     </div>
-
-    <div class="agir-grid">
-      <div class="agir-card">
-        <div class="agir-icon">🗳️</div>
-        <div class="agir-title">Voter & convaincre</div>
-        <p class="agir-text">Parlez autour de vous, expliquez le programme à vos proches, voisins et collègues. Chaque voix compte.</p>
-        <button class="agir-btn" onclick="scrollToForm()">Je m'engage</button>
-      </div>
-      <div class="agir-card">
-        <div class="agir-icon">📣</div>
-        <div class="agir-title">Devenir bénévole</div>
-        <p class="agir-text">Rejoignez les équipes terrain pour les meetings, distributions de tracts, et animations dans votre quartier.</p>
-        <button class="agir-btn" onclick="scrollToForm()">Rejoindre l'équipe</button>
-      </div>
-      <div class="agir-card">
-        <div class="agir-icon">💚</div>
-        <div class="agir-title">Faire un don</div>
-        <p class="agir-text">Soutenez financièrement la campagne pour que le message atteigne chaque coin du pays, sans exception.</p>
-        <button class="agir-btn" onclick="scrollToForm()">Faire un don</button>
-      </div>
-      <div class="agir-card">
-        <div class="agir-icon">📱</div>
-        <div class="agir-title">Partager en ligne</div>
-        <p class="agir-text">Relayez nos messages sur vos réseaux sociaux et aidez à amplifier la voix du changement.</p>
-        <button class="agir-btn" onclick="scrollToForm()">S'inscrire</button>
-      </div>
-    </div>
-
-    <div class="engagement-form" id="engagementForm">
-      <h3>Je rejoins le mouvement</h3>
-      <p>Remplissez ce formulaire et notre équipe vous contactera sous 48h pour vous orienter selon vos disponibilités.</p>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Prénom *</label>
-          <input type="text" placeholder="Votre prénom">
+    <div class="eng-grid">
+      <div class="eng-options">
+        <div class="eng-option">
+          <div class="eng-option-num">1</div>
+          <div><h4>Voter le 27 juillet</h4><p>Participez au scrutin et exprimez votre choix pour l'avenir de l'ESP.</p></div>
         </div>
-        <div class="form-group">
-          <label>Nom *</label>
-          <input type="text" placeholder="Votre nom">
+        <div class="eng-option">
+          <div class="eng-option-num">2</div>
+          <div><h4>Diffuser le programme</h4><p>Partagez notre programme auprès de vos collègues, étudiants et partenaires.</p></div>
+        </div>
+        <div class="eng-option">
+          <div class="eng-option-num">3</div>
+          <div><h4>Soumettre vos idées</h4><p>Notre management repose sur l'écoute. Partagez vos suggestions pour l'ESP.</p></div>
+        </div>
+        <div class="eng-option">
+          <div class="eng-option-num">4</div>
+          <div><h4>Suivre la campagne</h4><p>Retrouvez toutes les actualités sur <strong style="color:var(--gold)">madyibrahima4esp2026.com</strong></p></div>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Email *</label>
-          <input type="email" placeholder="votre@email.com">
+      <div class="eng-form">
+        <h3>Entrer en contact</h3>
+        <p class="sub">Question, suggestion ou souhait de rejoindre la dynamique ? Écrivez-nous.</p>
+        <div class="fg-row">
+          <div class="fg"><label>Prénom</label><input type="text" placeholder="Votre prénom"></div>
+          <div class="fg"><label>Nom</label><input type="text" placeholder="Votre nom"></div>
         </div>
-        <div class="form-group">
-          <label>Téléphone</label>
-          <input type="tel" placeholder="+221 XX XXX XX XX">
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Ville / Région</label>
-          <input type="text" placeholder="Ex : Dakar, Thiès, Saint-Louis...">
-        </div>
-        <div class="form-group">
-          <label>Comment voulez-vous agir ?</label>
+        <div class="fg"><label>Email institutionnel</label><input type="email" placeholder="prenom.nom@ucad.edu.sn"></div>
+        <div class="fg"><label>Statut à l'ESP</label>
           <select>
-            <option value="">Choisir une option…</option>
-            <option>Voter & convaincre mon entourage</option>
-            <option>Devenir bénévole terrain</option>
-            <option>Faire un don à la campagne</option>
-            <option>Partager sur les réseaux sociaux</option>
-            <option>Organiser un événement local</option>
+            <option>Choisir votre statut…</option>
+            <option>Enseignant-Chercheur (PER)</option>
+            <option>Personnel administratif et technique (PATS)</option>
+            <option>Étudiant(e)</option>
+            <option>Partenaire extérieur</option>
           </select>
         </div>
-      </div>
-      <div class="form-actions">
-        <p class="form-note">🔒 Vos données sont protégées. Désinscription possible à tout moment.</p>
-        <button class="btn-submit" onclick="handleSubmit()">Valider mon engagement →</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section temo-section">
-  <div class="section-inner">
-    <div class="section-label">Soutiens</div>
-    <h2 class="section-title">Ils parlent<br>pour le changement</h2>
-    <div class="divider"></div>
-    <div class="temo-grid">
-      <div class="temo-card">
-        <div class="temo-stars">★★★★★</div>
-        <p class="temo-text">« Mamadou Diallo est la voix que notre génération attendait. Il parle de nous, pour nous. Un homme qui a prouvé sa valeur par ses actes et non par de vaines promesses. »</p>
-        <div class="temo-author"><div class="temo-av">AK</div><div><div class="temo-name">Aminata Kouyaté</div><div class="temo-role">Enseignante, Thiès</div></div></div>
-      </div>
-      <div class="temo-card">
-        <div class="temo-stars">★★★★★</div>
-        <p class="temo-text">« Son programme pour les PME est concret et réaliste. En tant qu'entrepreneur, je cherchais un leader qui comprend les défis économiques réels de notre pays. »</p>
-        <div class="temo-author"><div class="temo-av">OD</div><div><div class="temo-name">Ousmane Diouf</div><div class="temo-role">Chef d'entreprise, Dakar</div></div></div>
-      </div>
-      <div class="temo-card">
-        <div class="temo-stars">★★★★★</div>
-        <p class="temo-text">« La santé de nos villages a été négligée pendant trop longtemps. Je soutiens ce candidat parce qu'il a mis la santé universelle au cœur de son programme. »</p>
-        <div class="temo-author"><div class="temo-av">FN</div><div><div class="temo-name">Fatoumata Ndiaye</div><div class="temo-role">Sage-femme, Kédougou</div></div></div>
+        <div class="fg"><label>Votre message</label><input type="text" placeholder="Votre message ou suggestion…"></div>
+        <button class="btn-submit" onclick="handleSubmit()">Envoyer le message →</button>
+        <p class="form-note">🔒 Vos données sont confidentielles et ne seront pas transmises à des tiers.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ════════ FOOTER ════════ -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">Elect<span>Voix</span></div>
-      <p class="footer-about">Campagne officielle de Mamadou Diallo pour l'élection présidentielle 2026. Pour une nation forte, juste et souveraine. Mouvement « Nation Debout ».</p>
+  <div class="footer-top">
+    <div class="foot-brand">
+      <div class="foot-name">Mady CISSE &amp; Ibrahima FALL</div>
+      <div class="foot-tagline">« Ensemble vers une nouvelle dynamique de performances »</div>
+      <p class="foot-desc">Candidats Directeur &amp; Directeur des Études de l'École Supérieure Polytechnique de l'UCAD pour l'élection de Juillet 2026.</p>
+      <a href="https://www.madyibrahima4esp2026.com" target="_blank" class="foot-domain">🌐 madyibrahima4esp2026.com</a>
     </div>
     <div class="footer-col">
       <h4>Navigation</h4>
       <ul>
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#candidat">Le Candidat</a></li>
-        <li><a href="#programme">Programme</a></li>
-        <li><a href="#actualites">Actualités</a></li>
-        <li><a href="#agenda">Agenda</a></li>
-        <li><a href="#agir">Agir avec nous</a></li>
+        <li><a href="#vision">Notre Vision</a></li>
+        <li><a href="#candidats">Les Candidats</a></li>
+        <li><a href="#programme">7 Axes Stratégiques</a></li>
+        <li><a href="#projets">Projets structurants</a></li>
+        <li><a href="#calendrier">Calendrier Gantt</a></li>
+        <li><a href="#agenda">Agenda électoral</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Ressources</h4>
+      <h4>Documents</h4>
       <ul>
-        <li><a href="#">Programme complet (PDF)</a></li>
-        <li><a href="#">Kit presse</a></li>
-        <li><a href="#">Communiqués officiels</a></li>
-        <li><a href="#">Photos & Vidéos</a></li>
+        <li><a href="#">Profession de Foi (PDF)</a></li>
+        <li><a href="#">Programme complet</a></li>
+        <li><a href="#">Théorie du changement</a></li>
+        <li><a href="#">Présentation détaillée</a></li>
+        <li><a href="#">Communiqué de presse</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Liens utiles</h4>
+      <ul>
+        <li><a href="http://www.esp.sn" target="_blank">www.esp.sn</a></li>
+        <li><a href="http://www.ucad.sn" target="_blank">www.ucad.sn</a></li>
+        <li><a href="#">Forge Ndiaga NDIAYE</a></li>
+        <li><a href="#">Contact presse</a></li>
         <li><a href="#">Mentions légales</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="#">info@electvoix.demo</a></li>
-        <li><a href="#">+221 XX XXX XX XX</a></li>
-        <li><a href="#">Dakar, Sénégal</a></li>
-        <li><a href="#">Presse : presse@electvoix.demo</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-note">© 2026 ElectVoix — Site de démonstration. Tous droits réservés.</p>
-    <div class="social-links">
-      <a href="#" class="social-link" title="Facebook">f</a>
-      <a href="#" class="social-link" title="X / Twitter">𝕏</a>
-      <a href="#" class="social-link" title="Instagram">◻</a>
-      <a href="#" class="social-link" title="YouTube">▶</a>
+    <p class="footer-copy">© 2026 Mady CISSE &amp; Ibrahima FALL — Programme ESP/UCAD. Tous droits réservés.</p>
+    <div class="socials">
+      <a href="#" class="soc" aria-label="Facebook">f</a>
+      <a href="#" class="soc" aria-label="LinkedIn">in</a>
+      <a href="#" class="soc" aria-label="Twitter">𝕏</a>
+      <a href="#" class="soc" aria-label="YouTube">▶</a>
     </div>
   </div>
 </footer>
@@ -778,42 +1416,35 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-// Nav scroll effect
-window.addEventListener('scroll',()=>{
-  const nav=document.getElementById('mainNav');
-  nav.style.boxShadow=window.scrollY>20?'0 4px 28px rgba(0,0,0,0.4)':'none';
-});
-
 // Mobile menu
-function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
-function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');}
+function toggleMenu(){document.getElementById('mobileNav').classList.add('open');}
+function closeMenu(){document.getElementById('mobileNav').classList.remove('open');}
 
-// Scroll to form
-function scrollToForm(){document.getElementById('engagementForm').scrollIntoView({behavior:'smooth',block:'start'});}
-
-// Form submit
-function handleSubmit(){
-  const inputs=document.querySelectorAll('#engagementForm input, #engagementForm select');
-  let filled=true;
-  inputs.forEach(i=>{if(i.required&&!i.value)filled=false;});
-  alert('✅ Merci pour votre engagement !\nNotre équipe vous contactera bientôt.\n\n(Ceci est une démonstration)');
+// Programme axes
+function showAxe(i){
+  document.querySelectorAll('.prog-item').forEach((t,j)=>t.classList.toggle('active',j===i));
+  document.querySelectorAll('.prog-panel').forEach((p,j)=>p.classList.toggle('active',j===i));
 }
 
-// Fade-in on scroll
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.style.opacity='1';
-      entry.target.style.transform='translateY(0)';
-    }
-  });
-},{threshold:0.08});
+// Form
+function handleSubmit(){
+  alert('✅ Message bien reçu !\n\nNous vous répondrons rapidement.\n\n(Site de démonstration)');
+}
 
-document.querySelectorAll('.prog-card,.temo-card,.agenda-item,.agir-card,.actu-card,.tl-item').forEach(el=>{
-  el.style.opacity='0';
-  el.style.transform='translateY(18px)';
-  el.style.transition='opacity 0.5s ease, transform 0.5s ease';
-  obs.observe(el);
+// Reveal animation
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.08});
+document.querySelectorAll('.reveal,.ps-card,.cand-card,.ag-card').forEach(el=>{
+  el.classList.add('reveal');
+  observer.observe(el);
+});
+
+// Header shadow on scroll
+window.addEventListener('scroll',()=>{
+  const h=document.querySelector('.site-header');
+  if(window.scrollY>20)h.style.boxShadow='0 4px 20px rgba(0,60,126,.08)';
+  else h.style.boxShadow='none';
 });
 </script>
 </body>
